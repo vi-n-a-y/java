@@ -11,7 +11,5 @@ public class String_Buffer {
         System.out.println(str.subSequence(2, 6));
         System.out.println(str.substring(3));
         System.out.println(str);
-
     }
-
 }
