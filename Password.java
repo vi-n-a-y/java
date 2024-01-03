@@ -29,7 +29,9 @@ public class Password {
 
     public static void main(String args[]) {
         String str = "Abcd@1234";
+        String str2="abcd@1234";
         System.out.println(strongPassword(str, str.length()));
+        System.out.println(strongPassword(str2, str2.length()));
     }
 
 }
