@@ -16,7 +16,7 @@ public class BankDAO {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user_info","root","root");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank_details","root","root");
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery("select * from user_info");
 			
