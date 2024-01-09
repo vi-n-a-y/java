@@ -124,110 +124,19 @@ public class Home_Page extends HttpServlet {
 		
 		
 		
-	}
+// 	}
 
-	private void registerEmployee(BankDTO employee) {
-		// TODO Auto-generated method stub
+// 	private void registerEmployee(BankDTO employee) {
+// 		// TODO Auto-generated method stub
 		
-	}
+// 	}
 
-	private String getParameter(String string) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-}
+// 	private String getParameter(String string) {
+// 		// TODO Auto-generated method stub
+// 		return null;
+// 	}
+// }
 
-//
-//public class BankDTO {
-//	
-//	private String userId;
-//	private String uname;
-//	private String password;
-//	private String fullName;
-//	private String email;
-//	private String phno;
-//	private String address;
-//		
-//	
-//	
-//	public BankDTO() {
-//		super();
-//	}
-//
-//
-//	public String getUserId() {
-//		return userId;
-//	}
-//
-//
-//	public void setUserId(String userId) {
-//		this.userId = userId;
-//	}
-//
-//
-//	public String getUname() {
-//		return uname;
-//	}
-//
-//
-//	public void setUname(String uname) {
-//		this.uname = uname;
-//	}
-//
-//
-//	public String getPassword() {
-//		return password;
-//	}
-//
-//
-//	public void setPassword(String password) {
-//		this.password = password;
-//	}
-//	public String getFullName() {
-//		return fullName;
-//	}
-//
-//
-//	public void setFullName(String fullName) {
-//		this.fullName = fullName;
-//	}
-//
-//
-//	public String getEmail() {
-//		return email;
-//	}
-//
-//
-//	public void setEmail(String email) {
-//		this.email = email;
-//	}
-//
-//
-//	public String getPhno() {
-//		return phno;
-//	}
-//
-//
-//	public void setPhno(String phno) {
-//		this.phno = phno;
-//	}
-//
-//
-//	public String getAddress() {
-//		return address;
-//	}
-//
-//
-//	public void setAddress(String address) {
-//		this.address = address;
-//	}
-//
-//
-//
-//	
-//	
-//	
-//}
 
 
 
