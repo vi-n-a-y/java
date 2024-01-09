@@ -5,7 +5,7 @@ package com.vin.BankDTO;
 
 public class BankDTO {
 	
-	private String userId;
+	private int userId;
 	private String uname;
 	private String password;
 	private String fullName;
@@ -20,12 +20,12 @@ public class BankDTO {
 	}
 
 
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
