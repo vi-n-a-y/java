@@ -1,36 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Banking</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Application</title>
+<style>
+        .main_container{
+        width:100%;
+        min-height: 100vh;
+        background: linear-gradient(135deg,#153677,#4e085f);
+        padding:10px;
+    }
+    .credit{
+         background:linear-gradient(#ee8133,#1d8eb4); 
+        color:white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+       top: 43%;
+       left:42%;
+    }
+    .register{
+        color:red;
+        background-color: white;
+        padding-left: 20px;
+       
+    }
+    .forgot{
+        color:red;
+        text-decoration: none;
+        /* padding-left: 10px; */
+        padding-right: 1px;
+       
+    }
+    .forgot:hover{
+        color:orange;
+    }
+    .return{
+        padding-left: 100px ;
+    }
+    button{
+        margin-left: 1px;
+        margin-right: 1px;
+    }
+    input{
+        margin-bottom: 5px;
+        height:20px;
+    }
+</style>
 </head>
 <body>
-<form action="http://localhost:8080/Banking_application/home" method="post">
-<h1 style="color:blue" align="center"> LOGIN PAGE</h1>
-<label>UserId :</label>
-<input type="text" name="userId" id="u_name">
-   
-<label>User Name :</label>
-<input type="text" name="uname" id="u_name">
-   
-<br><br>
-<label>Password :</label>
-<input type="password" name="password" id="u_pass">
-<label>fullName :</label>
-<input type="text" name="fullName" id="u_name">
-   <label>email :</label>
-<input type="text" name="email" id="u_name">
-   <label>phone Number :</label>
-<input type="text" name="phno" id="u_name">
-   <label>address :</label>
-<input type="text" name="address" id="u_name">
-   
-<button onclick="sub()">submit</button>
-<button onclick="sign()">signin</button>
+    <div class="main_container">
+            <div class="credit">
+<form action="home" method="post">
+        <table>
+           
+            <tr ><td><label >Name:  </label></td><td><input type="text" name="u_name" size=23 placeholder="Enter your Name..."></td></tr>
+            <tr ><td><label >Password : </label></td><td ><input type="password" size=23 name="u_pass" placeholder="Enter password Here..."></td></tr>
+        </table>
+        <div class="inp">
+        <table>    
+           <tr><td > <a href="#" class="forgot">forgot password ?</a> <button class="register">Register</button><button class="register">Submit</button></td></tr>      
+         
+        </table>
+    </div>
 </form>
+    </div>
+   
+</div>
 
 
-
-
+               
 </body>
 </html>
