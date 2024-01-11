@@ -11,9 +11,7 @@ import com.vin.BankDTO.BankDTO;
 
 //
 public class BankDAO {
-//	public BankDTO getUserDetails(String uname) {
-//		
-//		BankDTO resUser = null;
+
 	public int registerEmployee(BankDTO employee)throws ClassNotFoundException{
 		String Insert_user_info="INSERT INTO user_info"+
 				"(userId,uname,password,fullName,email,phno,address)values"+
