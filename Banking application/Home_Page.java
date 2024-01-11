@@ -11,10 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Random;
 
-import com.vin.BankDAO.BankDAO;
-import com.vin.BankDTO.BankDTO;
 
 import java.io.PrintWriter;
 //@WebServlet("/home")
@@ -24,58 +21,59 @@ public class Home_Page extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		userId,uname,password,fullName,email,phno,address
 		
-		int userId=Integer.parseInt(getParameter("userId"));
-		String uname=request.getParameter("uname");
-		String password=request.getParameter("password");
-		String fullName=request.getParameter("fullName");
-		String email=request.getParameter("email");
-		String phno=request.getParameter("phno");
-		String address=request.getParameter("address");
-		
-		BankDTO employee=new BankDTO();
-		employee.setUserId(userId);
-		employee.setUname(uname);
-		employee.setPassword(password);
-		employee.setFullName(fullName);
-		employee.setEmail(email);
-		employee.setPhno(phno);
-		employee.setAddress(address);
-		
-		registerEmployee(employee);
-		
-		
-//		PrintWriter out= response.getWriter();
-//		String uname=request.getParameter("u_name");
-//		String upass= request.getParameter("u_pass");
-//		Random random = new Random();
-//		long x=random.nextLong(6000000000L, 9999999999L);
-//		long y=random.nextLong(100000000000L, 999999999999L);
-		
-//		out.println(x);
-//		try {
-//			Class .forName("com.mysql.cj.jdbc.Driver");
-//			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
-//			String uname=request.getParameter("u_name");
-//			String upass= request.getParameter("u_pass");
-//			PreparedStatement ps=con.prepareStatement("select * from user_info where user_name=? and user_pass=?");
-//			ps.setString(1,uname);
-//			ps.setString(2,upass);
-//			ResultSet rs=ps.executeQuery();
-//			if(rs.next()) {
-//				out.println("<p>login sucess</p>");
-//			}
-//			else {
-//				out.println("<p>login failed</p>");
-//			}
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
+//		int userId=Integer.parseInt(getParameter("userId"));
+//		String uname=request.getParameter("uname");
+//		String password=request.getParameter("password");
+//		String fullName=request.getParameter("fullName");
+//		String email=request.getParameter("email");
+//		String phno=request.getParameter("phno");
+//		String address=request.getParameter("address");
 //		
+//		BankDTO employee=new BankDTO();
+//		employee.setUserId(userId);
+//		employee.setUname(uname);
+//		employee.setPassword(password);
+//		employee.setFullName(fullName);
+//		employee.setEmail(email);
+//		employee.setPhno(phno);
+//		employee.setAddress(address);
+//		
+//		registerEmployee(employee);
+		
+		
+		PrintWriter out= response.getWriter();
+
+		
+
+		try {
+			String again= "<font color=\"red\">login failed , Try again!</font>\r\n";
+			
+			Class .forName("com.mysql.cj.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
+			String uname=request.getParameter("u_name");
+			String upass= request.getParameter("u_pass");
+			PreparedStatement ps=con.prepareStatement("select * from user_info where user_name=? and user_pass=?");
+			ps.setString(1,uname);
+			ps.setString(2,upass);
+			ResultSet rs=ps.executeQuery();
+			if(rs.next()) {
+				out.println("login success");
+				
+			}
+			else {
+				response.getWriter().append("<html><body>").append(again).append("</body></html>");
+				
+				response.sendRedirect("http://localhost:8080/Banking_application/bank.html");
+				
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
 //	String res="<html>\r\n"
 //			+ "<body>\r\n"
 //			+ "<div>\r\n"
@@ -117,25 +115,24 @@ public class Home_Page extends HttpServlet {
 //
 //	response.sendRedirect("Stmt");
 		
-//		abcd	something	
 		
 		
 		
 		
-		
-		
-// 	}
+//		
+//	}
+//
+//	private void registerEmployee(BankDTO employee) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//
+//	private String getParameter(String string) {
+//		// TODO Auto-generated method stub
+//		return null;
+	}
+}
 
-// 	private void registerEmployee(BankDTO employee) {
-// 		// TODO Auto-generated method stub
-		
-// 	}
-
-// 	private String getParameter(String string) {
-// 		// TODO Auto-generated method stub
-// 		return null;
-// 	}
-// }
 
 
 
