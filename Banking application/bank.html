@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!Doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,7 @@
         .main_container{
         width:100%;
         min-height: 100vh;
-        background: linear-gradient(135deg,#153677,#4e085f);
+        background: linear-gradient(135deg,#4e085f,#153677);
         padding:10px;
     }
     .credit{
@@ -18,21 +18,23 @@
         display: flex;
         justify-content: center;
         position: absolute;
-       top: 43%;
-       left:42%;
+       top: 30%;
+       left:39%;
+       border:2px solid red;
+       padding:60px 30px;
     }
+
     .register{
         color:red;
         background-color: white;
-        padding-left: 20px;
-       
+        padding: 3px 15px;
+        margin:2px 10px;
     }
     .forgot{
         color:red;
         text-decoration: none;
         /* padding-left: 10px; */
-        padding-right: 1px;
-       
+        padding-right: 1px;    
     }
     .forgot:hover{
         color:orange;
@@ -40,36 +42,71 @@
     .return{
         padding-left: 100px ;
     }
-    button{
-        margin-left: 1px;
-        margin-right: 1px;
-    }
-    input{
-        margin-bottom: 5px;
+
+    .info_inp {
+        margin: 20px 20px;
         height:20px;
     }
+    .inp{
+    	margin-top:20px;
+    }
+    .regi_btn{
+        color:rgb(34, 20, 123);
+        background-color: white;
+        padding:3px 15px;
+        margin:20px 10px;
+    }  
 </style>
 </head>
 <body>
+ 
+
     <div class="main_container">
-            <div class="credit">
-<form action="home" method="post">
+    
+      <div class="credit" id="credit">
+			
+			<div>
+			<form id="form1" action="http://localhost:8080/Banking_application/home" method="get">
         <table>
            
-            <tr ><td><label >Name:  </label></td><td><input type="text" name="u_name" size=23 placeholder="Enter your Name..."></td></tr>
-            <tr ><td><label >Password : </label></td><td ><input type="password" size=23 name="u_pass" placeholder="Enter password Here..."></td></tr>
+            <tr ><td><label >Name:  </label></td><td><input type="text" name="u_name" size=23 class="info_inp"  placeholder="Enter your Name..."></td></tr>
+            <tr ><td><label >Password : </label></td><td ><input type="password" size=23 name="u_pass" class="info_inp"  placeholder="Enter password Here..."></td></tr>
+			     
         </table>
+       
+          </form> 
         <div class="inp">
-        <table>    
-           <tr><td > <a href="#" class="forgot">forgot password ?</a> <button class="register">Register</button><button class="register">Submit</button></td></tr>      
+        <table> 
          
+           <tr><td > <a href="#" class="forgot">forgot password ?</a> <button onclick="register()" class="register">Register</button><button class="register">Submit</button></td></tr>               
         </table>
+         
     </div>
-</form>
+     
     </div>
-   
+<!-- </form> --> 
+    </div>
+    <div class="info" id="info">
+ <!-- <form id="form2"> -->
+ <form action="" method="post"> 
+            <table> 
+               <tr><td><label>User Name :</label></td><td><input type="text" name="uname" class="info_inp"  placeholder="Enter your Name.."></td></tr>
+               <tr ><td><label >Password :</label></td><td><input type="password"  name="upass" class="info_inp"  placeholder="Enter password Here..."></td></tr>
+               <tr ><td> <label>full Name :</label></td><td ><input type="text" name="fullName"  class="info_inp"  placeholder="Enter full Name Here..."></td></tr>
+               <tr ><td><label>email :</label></td><td >  <input type="text" name="email" class="info_inp"  placeholder="Enter your email Here..."></td></tr>
+               <tr ><td><label >Phone No. :</label></td><td ><input type="text"  name="phNo" class="info_inp"  placeholder="Enter Phone Number Here..."></td></tr>
+               <tr ><td><label >Address :</label></td><td ><input type="text"  name="address" class="info_inp"  placeholder="Enter your Address Here..."></td></tr>
+         		
+           </table>
+           </form>
+       <!-- </form> -->
+               
+                    <button class="regi_btn" >submit</button>
+                    <button class="regi_btn" onclick="register()">signin</button>  
+                          
+        </div> 
+          
 </div>
-
 
                
 </body>
