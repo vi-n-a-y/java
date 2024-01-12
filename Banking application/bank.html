@@ -119,7 +119,21 @@
         </div> 
           
 </div>
-
+<script>
+       
+        function register(){
+            var credit = document.getElementById("credit")
+           var  info=document.getElementById("info");
+           if(info.style.display!="block" && credit.style.display!="none"){
+            credit.style.display="none";
+            info.style.display="block";           
+           } 
+          else {
+            info.style.display="none";
+            credit.style.display="block";
+           }          
+        }
+</script>
                
 </body>
 </html>
