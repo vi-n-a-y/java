@@ -19,30 +19,108 @@ public class Home_Page extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		userId,uname,password,fullName,email,phno,address
-		
-//		int userId=Integer.parseInt(getParameter("userId"));
-//		String uname=request.getParameter("uname");
-//		String password=request.getParameter("password");
-//		String fullName=request.getParameter("fullName");
-//		String email=request.getParameter("email");
-//		String phno=request.getParameter("phno");
-//		String address=request.getParameter("address");
-//		
-//		BankDTO employee=new BankDTO();
-//		employee.setUserId(userId);
-//		employee.setUname(uname);
-//		employee.setPassword(password);
-//		employee.setFullName(fullName);
-//		employee.setEmail(email);
-//		employee.setPhno(phno);
-//		employee.setAddress(address);
-//		
-//		registerEmployee(employee);
+
 		
 		
 		PrintWriter out= response.getWriter();
-		
+		String personal="<!DOCTYPE html>\r\n"
+				+ "<html lang=\"en\">\r\n"
+				+ "<head>\r\n"
+				+ "    <meta charset=\"UTF-8\">\r\n"
+				+ "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n"
+				+ "    <title>Document</title>\r\n"
+				+ "    <style>\r\n"
+				+ " \r\n"
+				+ "\r\n"
+				+ ".bg_black{\r\n"
+				+ "    background-color: black;\r\n"
+				+ "    height:50px;\r\n"
+				+ "    padding-top:25px;\r\n"
+				+ "    color:white;\r\n"
+				+ "\r\n"
+				+ "\r\n"
+				+ "}\r\n"
+				+ ".logo1{\r\n"
+				+ "    font-size:20px;\r\n"
+				+ "    padding-left:35px;\r\n"
+				+ "    color:blue;\r\n"
+				+ "}\r\n"
+				+ "a{\r\n"
+				+ "    padding-right:120px;\r\n"
+				+ "    text-decoration: none;\r\n"
+				+ "    color:white;\r\n"
+				+ "    \r\n"
+				+ "\r\n"
+				+ "}\r\n"
+				+ ".search{\r\n"
+				+ "    background-color: orange;\r\n"
+				+ "    color:white;\r\n"
+				+ "    \r\n"
+				+ "   \r\n"
+				+ "}\r\n"
+				+ "\r\n"
+				+ ".search:hover{\r\n"
+				+ "    background-color: blue;\r\n"
+				+ "    color:orange;\r\n"
+				+ "}\r\n"
+				+ ".sign{\r\n"
+				+ "    background-color: orange;\r\n"
+				+ "    color:white;\r\n"
+				+ "    border-radius: 10%;\r\n"
+				+ "    padding:2px 10px ;\r\n"
+				+ "   \r\n"
+				+ "    margin:0px 80px;\r\n"
+				+ "}\r\n"
+				+ ".sign:hover{\r\n"
+				+ "    background-color: blue;\r\n"
+				+ "    color:orange;\r\n"
+				+ "}\r\n"
+				+ ".pers_info{\r\n"
+				+ "    padding: 20px 50px;\r\n"
+				+ "    margin: 20px 50px;\r\n"
+				+ "    border:2px solid black;\r\n"
+				+ "}\r\n"
+				+ ".info_text{\r\n"
+				+ "    margin: 20px 20px;\r\n"
+				+ "        height:20px;\r\n"
+				+ "}\r\n"
+				+ "\r\n"
+				+ "   \r\n"
+				+ "\r\n"
+				+ "\r\n"
+				+ "\r\n"
+				+ "\r\n"
+				+ "    </style>\r\n"
+				+ "</head>\r\n"
+				+ "<body>\r\n"
+				+ "<div class=\"home_main\">    \r\n"
+				+ "    <div class=\"bg_black\">\r\n"
+				+ "        <b> <a class=\"logo1\" href=\"#\" >Pir@es.Bank</a></b>\r\n"
+				+ "        <a href=\"#\" >MENU</a>\r\n"
+				+ "        <a href=\"#\" >SERVICES</a>\r\n"
+				+ "        <a href=\"#\" >JOBS</a>\r\n"
+				+ "        <a href=\"#\" >CONTACT US</a>\r\n"
+				+ "        <input type=\"text\" placeholder=\"search\">\r\n"
+				+ "        <button class=\"search\">search</button>\r\n"
+				+ "        <button class=\"sign\">logout</button>       \r\n"
+				+ "    </div>\r\n"
+				+ "<div class=\"pers_info\">\r\n"
+				+ "    <table>\r\n"
+				+ "           \r\n"
+				+ "        <tr ><td><label >User Info :  </label></td><td><input type=\"text\" name=\"u_name\" size=23 class=\"info_text\"  placeholder=\"Enter your Name...\"></td></tr>\r\n"
+				+ "        <tr ><td><label >Full Name : </label></td><td ><input type=\"text\" size=23 name=\"u_pass\" class=\"info_text\"  placeholder=\"Enter password Here...\"></td></tr>\r\n"
+				+ "        <tr ><td><label >Phone Number :  </label></td><td><input type=\"text\" name=\"u_name\" size=23 class=\"info_text\"  placeholder=\"Enter your Name...\"></td></tr>\r\n"
+				+ "        <tr ><td><label >Email :  </label></td><td><input type=\"text\" name=\"u_name\" size=23 class=\"info_text\"  placeholder=\"Enter your Name...\"></td></tr>\r\n"
+				+ "          \r\n"
+				+ "    </table> \r\n"
+				+ "</div>\r\n"
+				+ "\r\n"
+				+ "\r\n"
+				+ "\r\n"
+				+ "\r\n"
+				+ "    </div>\r\n"
+				+ "</body>\r\n"
+				+ "</html>";
 
 		
 
@@ -58,8 +136,8 @@ public class Home_Page extends HttpServlet {
 			ps.setString(2,upass);
 			ResultSet rs=ps.executeQuery();
 			if(rs.next()) {
-				
-				response.sendRedirect("Stmt");
+				response.getWriter().append(personal);
+//				out.println("success");
 				
 			}
 			else {
@@ -76,6 +154,26 @@ public class Home_Page extends HttpServlet {
 
 	}
 }
+//userId,uname,password,fullName,email,phno,address
+
+//int userId=Integer.parseInt(getParameter("userId"));
+//String uname=request.getParameter("uname");
+//String password=request.getParameter("password");
+//String fullName=request.getParameter("fullName");
+//String email=request.getParameter("email");
+//String phno=request.getParameter("phno");
+//String address=request.getParameter("address");
+//
+//BankDTO employee=new BankDTO();
+//employee.setUserId(userId);
+//employee.setUname(uname);
+//employee.setPassword(password);
+//employee.setFullName(fullName);
+//employee.setEmail(email);
+//employee.setPhno(phno);
+//employee.setAddress(address);
+//
+//registerEmployee(employee);
 
 
 
