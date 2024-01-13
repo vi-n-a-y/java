@@ -54,8 +54,7 @@
     .forgot{
         color:red;
         text-decoration: none;
-       padding: 3px 1px 3px 1px;
-       
+       padding: 3px 1px 3px 1px;       
         float:left   
     }
     .forgot:hover{
@@ -89,41 +88,33 @@
       <div class="credit" id="credit">
 			
 			<div> 
+			
 			<form id="form1" action="http://localhost:8080/Banking_application/home" method="get">
-        <table>
-           
+        <table>         
             <tr ><td><label >Name:  </label></td><td><input type="text" name="u_name" size=23 class="info_inp"  placeholder="Enter your Name..."></td></tr>
-            <tr ><td><label >Password : </label></td><td ><input type="password" size=23 name="u_pass" class="info_inp"  placeholder="Enter password Here..."></td></tr>
-			 
+            <tr ><td><label >Password : </label></td><td ><input type="password" size=23 name="u_pass" class="info_inp"  placeholder="Enter password Here..."></td></tr>		 
         </table>
         <a href="#" class="forgot">forgot password ?</a>
          <button class="sign_sub">Submit</button></form> 
-      <!--  <div class="inp"> -->
-       
-      
-          <button class="sign_regi" onclick="register()">Register</button>             
-        
-
-		<!-- 	</div>  -->
-			
+          <button class="sign_regi" onclick="register()">Register</button>		
     	</div> 
     </div>
+    
    		 <div class="info" id="info">
+   		 
    		 <form action="home" method="get">
             <table> 
-             
                <tr><td><label>User Name :</label></td><td><input type="text" name="u_name" class="info_inp"  placeholder="Enter your Name.."></td></tr>
                <tr ><td><label >Password :</label></td><td><input type="password"  name="u_pass" class="info_inp"  placeholder="Enter password Here..."></td></tr>
                <tr ><td> <label>full Name :</label></td><td ><input type="text" name="fullName"  class="info_inp"  placeholder="Enter full Name Here..."></td></tr>
                <tr ><td><label>email :</label></td><td >  <input type="text" name="email" class="info_inp"  placeholder="Enter your email Here..."></td></tr>
                <tr ><td><label >Phone No. :</label></td><td ><input type="text"  name="phNo" class="info_inp"  placeholder="Enter Phone Number Here..."></td></tr>
-               <tr ><td><label >Address :</label></td><td ><input type="text"  name="address" class="info_inp"  placeholder="Enter your Address Here..."></td></tr>
-         		
+               <tr ><td><label >Address :</label></td><td ><input type="text"  name="address" class="info_inp"  placeholder="Enter your Address Here..."></td></tr>        		
            </table>
-           </form>
-               
-    <div class="regi_div" >          
-         <table><tr><td><!-- <form action="home" method="get"> --><button class="regi_btn" >submit</button><!-- </form> --></td><td><button class="regi_btn" onclick="register()">signin</button></td></tr></table>                         
+           </form>              
+    <div class="regi_div" >  
+            
+         <table><tr><td><button class="regi_btn" >submit</button></td><td><button class="regi_btn" onclick="register()">signin</button></td></tr></table>                         
 	</div>
 </div>
 </div>
@@ -142,14 +133,6 @@
             credit.style.display="block";
            }          
         }
-</script> 
-<!-- </head>
-
-<form action = "home">
-<input type="text" name="u_name">
-<input type="password" name="u_pass">
-<button>submit</button>
-</form> -->
-               
+</script>               
 </body>
 </html>
