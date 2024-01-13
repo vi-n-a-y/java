@@ -18,7 +18,7 @@ import java.io.PrintWriter;
 public class Home_Page extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		userId,uname,password,fullName,email,phno,address
 		
 //		int userId=Integer.parseInt(getParameter("userId"));
@@ -42,6 +42,7 @@ public class Home_Page extends HttpServlet {
 		
 		
 		PrintWriter out= response.getWriter();
+		
 
 		
 
@@ -57,7 +58,8 @@ public class Home_Page extends HttpServlet {
 			ps.setString(2,upass);
 			ResultSet rs=ps.executeQuery();
 			if(rs.next()) {
-				out.println("login success");
+				
+				response.sendRedirect("Stmt");
 				
 			}
 			else {
