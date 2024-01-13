@@ -36,24 +36,32 @@
        padding:50px 50px;
        display: none;
         }
-    .register{
+        .sign_sub{
         color:red;
         background-color: white;
         padding: 3px 15px;
-        margin:2px 10px;
-    }
+      margin:2px 5px 2px 5px; 
+        float:left;
+        }
+  .sign_regi{
+        color:red;
+        background-color: white;
+        padding: 3px 15px;
+       margin:2px 5px 2px 5px; 
+        float:left;
+
+    } 
     .forgot{
         color:red;
         text-decoration: none;
-        /* padding-left: 10px; */
-        padding-right: 1px;    
+       padding: 3px 1px 3px 1px;
+       
+        float:left   
     }
     .forgot:hover{
         color:orange;
     }
-    .return{
-        padding-left: 100px ;
-    }
+
 
     .info_inp {
         margin: 20px 20px;
@@ -66,8 +74,11 @@
         color:rgb(34, 20, 123);
         background-color: white;
         padding:3px 15px;
-        margin:20px 10px;
-    }  
+        margin-left:20px;
+    } 
+    .regi_div{
+    margin:10px 20px 10px 100px;
+    } 
 </style>
 </head>
 <body>
@@ -77,33 +88,32 @@
     
       <div class="credit" id="credit">
 			
-			<div>
+			<div> 
 			<form id="form1" action="http://localhost:8080/Banking_application/home" method="get">
         <table>
            
             <tr ><td><label >Name:  </label></td><td><input type="text" name="u_name" size=23 class="info_inp"  placeholder="Enter your Name..."></td></tr>
             <tr ><td><label >Password : </label></td><td ><input type="password" size=23 name="u_pass" class="info_inp"  placeholder="Enter password Here..."></td></tr>
-			     
+			 
         </table>
+        <a href="#" class="forgot">forgot password ?</a>
+         <button class="sign_sub">Submit</button></form> 
+      <!--  <div class="inp"> -->
        
-          </form> 
-        <div class="inp">
-        <table> 
-         
-           <tr><td > <a href="#" class="forgot">forgot password ?</a> <button onclick="register()" class="register">Register</button><button class="register">Submit</button></td></tr>               
-        </table>
-         
+      
+          <button class="sign_regi" onclick="register()">Register</button>             
+        
+
+		<!-- 	</div>  -->
+			
+    	</div> 
     </div>
-     
-    </div>
-<!-- </form> --> 
-    </div>
-    <div class="info" id="info">
- <!-- <form id="form2"> -->
- <form action="" method="post"> 
+   		 <div class="info" id="info">
+   		 <form action="home" method="get">
             <table> 
-               <tr><td><label>User Name :</label></td><td><input type="text" name="uname" class="info_inp"  placeholder="Enter your Name.."></td></tr>
-               <tr ><td><label >Password :</label></td><td><input type="password"  name="upass" class="info_inp"  placeholder="Enter password Here..."></td></tr>
+             
+               <tr><td><label>User Name :</label></td><td><input type="text" name="u_name" class="info_inp"  placeholder="Enter your Name.."></td></tr>
+               <tr ><td><label >Password :</label></td><td><input type="password"  name="u_pass" class="info_inp"  placeholder="Enter password Here..."></td></tr>
                <tr ><td> <label>full Name :</label></td><td ><input type="text" name="fullName"  class="info_inp"  placeholder="Enter full Name Here..."></td></tr>
                <tr ><td><label>email :</label></td><td >  <input type="text" name="email" class="info_inp"  placeholder="Enter your email Here..."></td></tr>
                <tr ><td><label >Phone No. :</label></td><td ><input type="text"  name="phNo" class="info_inp"  placeholder="Enter Phone Number Here..."></td></tr>
@@ -111,14 +121,13 @@
          		
            </table>
            </form>
-       <!-- </form> -->
                
-                    <button class="regi_btn" >submit</button>
-                    <button class="regi_btn" onclick="register()">signin</button>  
-                          
-        </div> 
-          
+    <div class="regi_div" >          
+         <table><tr><td><!-- <form action="home" method="get"> --><button class="regi_btn" >submit</button><!-- </form> --></td><td><button class="regi_btn" onclick="register()">signin</button></td></tr></table>                         
+	</div>
 </div>
+</div>
+
 <script>
        
         function register(){
@@ -133,7 +142,14 @@
             credit.style.display="block";
            }          
         }
-</script>
+</script> 
+<!-- </head>
+
+<form action = "home">
+<input type="text" name="u_name">
+<input type="password" name="u_pass">
+<button>submit</button>
+</form> -->
                
 </body>
 </html>
