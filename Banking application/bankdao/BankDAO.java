@@ -1,12 +1,12 @@
-package com.vin.BankDAO;
+package com.vin.bankdao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+//import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.vin.BankDTO.BankDTO;
+import com.vin.bankdto.BankDTO;
 
 
 //
