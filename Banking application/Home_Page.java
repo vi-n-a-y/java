@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.vin.bankdto.BankDTO;
 
 import java.io.PrintWriter;
 @WebServlet("/home")
@@ -19,7 +20,22 @@ public class Home_Page extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int userId=Integer.parseInt(getInitParameter("userId"));
+		String regi_name=request.getParameter("regi_name");
+		String password=request.getParameter("regi_pass");
+		String fullName=request.getParameter("fullName");
+		String email=request.getParameter("email");
+		String phno=request.getParameter("phno");
+		String address=request.getParameter("address");
 
+		BankDTO employee=new BankDTO();
+		employee.setUserId(userId);
+		employee.setUname(regi_name);
+		employee.setPassword(password);
+		employee.setFullName(fullName);
+		employee.setEmail(email);
+		employee.setPhno(phno);
+		employee.setAddress(address);
 		
 		
 		PrintWriter out= response.getWriter();
@@ -173,26 +189,7 @@ public class Home_Page extends HttpServlet {
 
 	}
 }
-//userId,uname,password,fullName,email,phno,address
 
-//int userId=Integer.parseInt(getParameter("userId"));
-//String uname=request.getParameter("uname");
-//String password=request.getParameter("password");
-//String fullName=request.getParameter("fullName");
-//String email=request.getParameter("email");
-//String phno=request.getParameter("phno");
-//String address=request.getParameter("address");
-//
-//BankDTO employee=new BankDTO();
-//employee.setUserId(userId);
-//employee.setUname(uname);
-//employee.setPassword(password);
-//employee.setFullName(fullName);
-//employee.setEmail(email);
-//employee.setPhno(phno);
-//employee.setAddress(address);
-//
-//registerEmployee(employee);
 
 
 
