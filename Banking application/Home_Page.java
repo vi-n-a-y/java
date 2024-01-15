@@ -13,29 +13,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.vin.bankdto.BankDTO;
+import com.vin.bankdao.BankDAO;
 
 import java.io.PrintWriter;
 @WebServlet("/home")
 public class Home_Page extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	 private BankDAO detailsDao=new BankDAO();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int userId=Integer.parseInt(getInitParameter("userId"));
-		String regi_name=request.getParameter("regi_name");
-		String password=request.getParameter("regi_pass");
-		String fullName=request.getParameter("fullName");
-		String email=request.getParameter("email");
-		String phno=request.getParameter("phno");
-		String address=request.getParameter("address");
-
-		BankDTO employee=new BankDTO();
-		employee.setUserId(userId);
-		employee.setUname(regi_name);
-		employee.setPassword(password);
-		employee.setFullName(fullName);
-		employee.setEmail(email);
-		employee.setPhno(phno);
-		employee.setAddress(address);
 		
 		
 		PrintWriter out= response.getWriter();
@@ -164,11 +150,11 @@ public class Home_Page extends HttpServlet {
 			
 			Class .forName("com.mysql.cj.jdbc.Driver");
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
-			String uname=request.getParameter("u_name");
-			String upass= request.getParameter("u_pass");
+			String user_name=request.getParameter("u_name");
+			String user_pass= request.getParameter("u_pass");
 			PreparedStatement ps=con.prepareStatement("select * from user_info where user_name=? and user_pass=?");
-			ps.setString(1,uname);
-			ps.setString(2,upass);
+			ps.setString(1,user_name);
+			ps.setString(2,user_pass);
 			ResultSet rs=ps.executeQuery();
 			if(rs.next()) {
 				response.getWriter().append(personal);
@@ -188,6 +174,40 @@ public class Home_Page extends HttpServlet {
 				
 
 	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		String uname=request.getParameter("regi_name");
+		String password=request.getParameter("regi_pass");
+		String fullName=request.getParameter("fullName");
+		String email=request.getParameter("email");
+		String phno=request.getParameter("phNo");
+		String address=request.getParameter("address");
+		
+		
+		
+
+
+		BankDTO details_dto =new BankDTO();
+		
+		details_dto.setUname(uname);
+		details_dto.setPassword(password);
+		details_dto.setFullName(fullName);
+		details_dto.setEmail(email);
+		details_dto.setPhno(phno);
+		details_dto.setAddress(address);
+		
+		try {
+			detailsDao.registerDetails(details_dto);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		PrintWriter out= response.getWriter();
+//		out.println("register successfully");
+		
+		
+}
 }
 
 
