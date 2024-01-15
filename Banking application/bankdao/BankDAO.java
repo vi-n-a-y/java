@@ -12,10 +12,10 @@ import com.vin.bankdto.BankDTO;
 //
 public class BankDAO {
 
-	public int registerEmployee(BankDTO employee)throws ClassNotFoundException{
+	public int registerDetails(BankDTO details)throws ClassNotFoundException{
 		String Insert_user_info="INSERT INTO user_info"+
-				"(userId,uname,password,fullName,email,phno,address)values"+
-				"(?,?,?,?,?,?,?)";
+				"(user_name,user_pass,user_full_name,user_mail,user_ph,user_address)values"+
+				"(?,?,?,?,?,?)";
 	
 		int result=0;
 		
@@ -27,15 +27,15 @@ public class BankDAO {
 //		ResultSet rs = stmt.executeQuery("select * from user_info");
 			PreparedStatement ps=con.prepareStatement(Insert_user_info);
 			
-			ps.setInt(1,employee.getUserId());
-			ps.setString(1,employee.getUname());
-			ps.setString(1,employee.getPassword());
-			ps.setString(1,employee.getFullName());
-		    ps.setString(1,employee.getEmail());
-			ps.setString(1,employee.getPhno());
-			ps.setString(1,employee.getAddress());
+//			ps.setInt(1,1);
+			ps.setString(1,details.getUname());
+			ps.setString(2,details.getPassword());
+			ps.setString(3,details.getFullName());
+		    ps.setString(4,details.getEmail());
+			ps.setString(5,details.getPhno());
+			ps.setString(6,details.getAddress());
 			
-			
+			System.out.println("the output is :"+ps);
 			result=ps.executeUpdate();
 	
 		}catch(Exception ex) {
