@@ -39,3 +39,7 @@ user_address varchar(50)
 INSERT INTO user_info values
 (101,"abcd","something","abcdefg","abcdef@gmail.com","9123456780","abcd_nagar/south_korea");
 SELECT * FROM user_info;
+
+ALTER TABLE user_info
+MODIFY user_id INT AUTO_INCREMENT;
+SELECT * FROM user_info;
