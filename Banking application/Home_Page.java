@@ -22,8 +22,42 @@ public class Home_Page extends HttpServlet {
 	 private BankDAO detailsDao=new BankDAO();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request,response);
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
+		
+		
+		
+		String uname=request.getParameter("u_name");
+		String password=request.getParameter("u_pass");
+		String fullName=request.getParameter("fullName");
+		String email=request.getParameter("email");
+		String phno=request.getParameter("phNo");
+		String address=request.getParameter("address");
+		
+		
+
+
+		BankDTO details_dto =new BankDTO();
+		
+		details_dto.setUname(uname);
+		details_dto.setPassword(password);
+		details_dto.setFullName(fullName);
+		details_dto.setEmail(email);
+		details_dto.setPhno(phno);
+		details_dto.setAddress(address);
+		
+		try {
+			detailsDao.registerDetails(details_dto);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		PrintWriter out= response.getWriter();
+//		out.println("register successfully");checked
+
 		PrintWriter out= response.getWriter();
 		String personal="<!DOCTYPE html>\r\n"
 				+ "<html lang=\"en\">\r\n"
@@ -109,10 +143,10 @@ public class Home_Page extends HttpServlet {
 				+ "<div class=\"pers_info\">\r\n"
 				+ "    <table>\r\n"
 				+ "           \r\n"
-				+ "        <tr ><td><label >User Info :  </label></td><td><input type=\"text\" name=\"info_user\"  class=\"info_text\" ></td></tr>\r\n"
-				+ "        <tr ><td><label >Full Name : </label></td><td ><input type=\"text\"  name=\"info_pass\" class=\"info_text\"  ></td></tr>\r\n"
-				+ "        <tr ><td><label >Phone Number :  </label></td><td><input type=\"text\" name=\"info_phone\"  class=\"info_text\" ></td></tr>\r\n"
-				+ "        <tr ><td><label >Email :  </label></td><td><input type=\"text\" name=\"info_email\"  class=\"info_text\"  ></td></tr>\r\n"
+				+ "        <tr ><td><label >User Name :  </label></td><td><input type=\"text\" name=\"info_user\"  class=\"info_text\" value="+uname+" ></td></tr>\r\n"
+				+ "        <tr ><td><label >Full Name : </label></td><td ><input type=\"text\"  name=\"info_pass\" class=\"info_text\" value="+fullName+"  ></td></tr>\r\n"
+				+ "        <tr ><td><label >Phone Number :  </label></td><td><input type=\"text\" name=\"info_phone\"  class=\"info_text\" value="+phno+" ></td></tr>\r\n"
+				+ "        <tr ><td><label >Email :  </label></td><td><input type=\"text\" name=\"info_email\"  class=\"info_text\" value="+email+" ></td></tr>\r\n"
 				+ "          \r\n"
 				+ "    </table> \r\n"
 				+ "</div>\r\n"
@@ -120,28 +154,31 @@ public class Home_Page extends HttpServlet {
 				+ "\r\n"
 				+ "    <table>\r\n"
 				+ "           \r\n"
-				+ "        <tr ><td><label >Accounts :  </label></td><td><input type=\"radio\" name=\"account_info\"  class=\"info_text\" ></td></tr>\r\n"
-				+ "        <tr ><td><label >IFSC Code :  </label></td><td><input type=\"text\" name=\"info_user\"  class=\"info_text\" ></td></tr>\r\n"
-				+ "        <tr ><td><label >Account Type : </label></td><td ><input type=\"text\"  name=\"info_pass\" class=\"info_text\"  ></td></tr>\r\n"
-				+ "        <tr ><td><label >Current Balance :  </label></td><td><input type=\"text\" name=\"info_phone\"  class=\"info_text\" ></td></tr>\r\n"
-				+ "        <tr ><td><label >Last Transcation Date :  </label></td><td><input type=\"text\" name=\"info_email\"  class=\"info_text\"  ></td></tr>\r\n"
+				+ "        <tr ><td><label >Accounts :  </label></td><td><input type=\"radio\" name=\"account_info\"  class=\"info_text\" checked ></td></tr>\r\n"
+				+ "        <tr ><td><label >IFSC Code :  </label></td><td><input type=\"text\" name=\"info_user\"  class=\"info_text\" value=\"SBI00467\" ></td></tr>\r\n"
+				+ "        <tr ><td><label >Account Type : </label></td><td ><input type=\"text\"  name=\"info_pass\" class=\"info_text\" value=\"Savings\" ></td></tr>\r\n"
+				+ "        <tr ><td><label >Current Balance :  </label></td><td><input type=\"text\" name=\"info_phone\"  class=\"info_text\"value=\"1025.45\" ></td></tr>\r\n"
+				+ "        <tr ><td><label >Last Transcation Date :  </label></td><td><input type=\"text\" name=\"info_email\"  class=\"info_text\" value=\"17/01/2024\" ></td></tr>\r\n"
 				+ "          \r\n"
 				+ "    </table> \r\n"
 				+ "\r\n"
-				+ "    <table>\r\n"
-				+ "           \r\n"
-				+ "        <tr ><td><label >Accounts :  </label></td><td><input type=\"radio\" name=\"account_info\"  class=\"info_text\" ></td></tr>\r\n"
-				+ "        <tr ><td><label >IFSC Code :  </label></td><td><input type=\"text\" name=\"info_user\"  class=\"info_text\" ></td></tr>\r\n"
-				+ "        <tr ><td><label >Account Type : </label></td><td ><input type=\"text\"  name=\"info_pass\" class=\"info_text\"  ></td></tr>\r\n"
-				+ "        <tr ><td><label >Current Balance :  </label></td><td><input type=\"text\" name=\"info_phone\"  class=\"info_text\" ></td></tr>\r\n"
-				+ "        <tr ><td><label >Last Transcation Date :  </label></td><td><input type=\"text\" name=\"info_email\"  class=\"info_text\"  ></td></tr>\r\n"
-				+ "          \r\n"
-				+ "    </table> \r\n"
-				+ "\r\n"
+//				+ "    <table>\r\n"
+//				+ "           \r\n"
+//				+ "        <tr ><td><label >Accounts :  </label></td><td><input type=\"radio\" name=\"account_info\"  class=\"info_text\" ></td></tr>\r\n"
+//				+ "        <tr ><td><label >IFSC Code :  </label></td><td><input type=\"text\" name=\"info_user\"  class=\"info_text\" ></td></tr>\r\n"
+//				+ "        <tr ><td><label >Account Type : </label></td><td ><input type=\"text\"  name=\"info_pass\" class=\"info_text\"  ></td></tr>\r\n"
+//				+ "        <tr ><td><label >Current Balance :  </label></td><td><input type=\"text\" name=\"info_phone\"  class=\"info_text\" ></td></tr>\r\n"
+//				+ "        <tr ><td><label >Last Transcation Date :  </label></td><td><input type=\"text\" name=\"info_email\"  class=\"info_text\"  ></td></tr>\r\n"
+//				+ "          \r\n"
+//				+ "    </table> \r\n"
+//				+ "\r\n"
 				+ "</div>\r\n"
 				+ "    </div>\r\n"
 				+ "</body>\r\n"
 				+ "</html>";
+		
+		
+
 
 		
 
@@ -153,8 +190,16 @@ public class Home_Page extends HttpServlet {
 			String user_name=request.getParameter("u_name");
 			String user_pass= request.getParameter("u_pass");
 			PreparedStatement ps=con.prepareStatement("select * from user_info where user_name=? and user_pass=?");
+//			
+//			uname,password,fullName,email,phno,address
 			ps.setString(1,user_name);
 			ps.setString(2,user_pass);
+//			ps.setString(3,fullName);
+//			ps.setString(4,email);
+//			ps.setString(5,phno);
+//			ps.setString(6,address);
+			
+			
 			ResultSet rs=ps.executeQuery();
 			if(rs.next()) {
 				response.getWriter().append(personal);
@@ -162,7 +207,12 @@ public class Home_Page extends HttpServlet {
 				
 			}
 			else {
-				out.println("login failed");
+
+					String again= "<font color=\"red\">login failed , Try again!</font>\r\n";
+				response.getWriter().append("<html><body>").append(again).append("</body></html>");
+				
+//				response.sendRedirect("http://localhost:8080/Banking_application/bank.html");
+				
 
 				
 			}
@@ -171,40 +221,6 @@ public class Home_Page extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-				
-
-	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		String uname=request.getParameter("regi_name");
-		String password=request.getParameter("regi_pass");
-		String fullName=request.getParameter("fullName");
-		String email=request.getParameter("email");
-		String phno=request.getParameter("phNo");
-		String address=request.getParameter("address");
-		
-		
-		
-
-
-		BankDTO details_dto =new BankDTO();
-		
-		details_dto.setUname(uname);
-		details_dto.setPassword(password);
-		details_dto.setFullName(fullName);
-		details_dto.setEmail(email);
-		details_dto.setPhno(phno);
-		details_dto.setAddress(address);
-		
-		try {
-			detailsDao.registerDetails(details_dto);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-//		PrintWriter out= response.getWriter();
-//		out.println("register successfully");
 		
 		
 }
