@@ -3,10 +3,14 @@ package com.vin.bankdao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.SQLException;
 
 import com.vin.bankdto.BankDTO;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.http.HttpSession;
 
 
 //
@@ -44,6 +48,51 @@ public class BankDAO {
 		
 		return result;
 	}
+	
+	
+	
+	
+	public boolean validate( BankDTO userDetails) throws ClassNotFoundException {
+		boolean status = false;
+
+		Class.forName("com.mysql.jdbc.Driver");
+
+		try (Connection connection = DriverManager
+				.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
+
+				// Step 2:Create a statement using connection object
+				PreparedStatement ps = connection.prepareStatement("select * from user_info where user_name=? and user_pass=? ")) {
+			ps.setString(1, userDetails.getUname());
+			ps.setString(2, userDetails.getPassword());
+			
+
+			System.out.println(ps);
+			ResultSet rs = ps.executeQuery();
+//				if(rs.next()){
+//					   System.out.println(rs.getString(1));
+//					   System.out.println(rs.getString(2));
+//					   System.out.println(rs.getString(3));
+//					   System.out.println(rs.getString(4));
+//					   System.out.println(rs.getString(5));
+//					
+//			}
+
+
+			status = rs.next();
+
+		} catch (SQLException e) {
+			// process sql exception
+			e.printStackTrace(System.err);
+		}
+		return status;
+	}
+
+	
+
+
+
+
+	
 	
 	
 }
