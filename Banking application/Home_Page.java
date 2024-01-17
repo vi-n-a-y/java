@@ -19,44 +19,24 @@ import java.io.PrintWriter;
 @WebServlet("/home")
 public class Home_Page extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	 private BankDAO detailsDao=new BankDAO();
-	
+	  BankDAO detailsDao=new BankDAO();
+	  BankDTO details_dto =new BankDTO();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request,response);
+		
+		
+
+	
+	
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
 		
 		
-		
-		String uname=request.getParameter("u_name");
-		String password=request.getParameter("u_pass");
-		String fullName=request.getParameter("fullName");
-		String email=request.getParameter("email");
-		String phno=request.getParameter("phNo");
-		String address=request.getParameter("address");
-		
-		
-
-
-		BankDTO details_dto =new BankDTO();
-		
-		details_dto.setUname(uname);
-		details_dto.setPassword(password);
-		details_dto.setFullName(fullName);
-		details_dto.setEmail(email);
-		details_dto.setPhno(phno);
-		details_dto.setAddress(address);
-		
-		try {
-			detailsDao.registerDetails(details_dto);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 //		PrintWriter out= response.getWriter();
-//		out.println("register successfully");checked
+//		out.println("register successfully");
 
 		PrintWriter out= response.getWriter();
 		String personal="<!DOCTYPE html>\r\n"
@@ -143,10 +123,10 @@ public class Home_Page extends HttpServlet {
 				+ "<div class=\"pers_info\">\r\n"
 				+ "    <table>\r\n"
 				+ "           \r\n"
-				+ "        <tr ><td><label >User Name :  </label></td><td><input type=\"text\" name=\"info_user\"  class=\"info_text\" value="+uname+" ></td></tr>\r\n"
-				+ "        <tr ><td><label >Full Name : </label></td><td ><input type=\"text\"  name=\"info_pass\" class=\"info_text\" value="+fullName+"  ></td></tr>\r\n"
-				+ "        <tr ><td><label >Phone Number :  </label></td><td><input type=\"text\" name=\"info_phone\"  class=\"info_text\" value="+phno+" ></td></tr>\r\n"
-				+ "        <tr ><td><label >Email :  </label></td><td><input type=\"text\" name=\"info_email\"  class=\"info_text\" value="+email+" ></td></tr>\r\n"
+				+ "        <tr ><td><label >User Name :  </label></td><td><input type=\"text\" name=\"info_user\"  class=\"info_text\" value=\"user_name\" ></td></tr>\r\n"
+				+ "        <tr ><td><label >Full Name : </label></td><td ><input type=\"text\"  name=\"info_pass\" class=\"info_text\" value=\"fullName\"  ></td></tr>\r\n"
+				+ "        <tr ><td><label >Phone Number :  </label></td><td><input type=\"text\" name=\"info_phone\"  class=\"info_text\" value=\"phno\" ></td></tr>\r\n"
+				+ "        <tr ><td><label >Email :  </label></td><td><input type=\"text\" name=\"info_email\"  class=\"info_text\" value=\"email\" ></td></tr>\r\n"
 				+ "          \r\n"
 				+ "    </table> \r\n"
 				+ "</div>\r\n"
@@ -182,48 +162,99 @@ public class Home_Page extends HttpServlet {
 
 		
 
-		try {
-	
-			
-			Class .forName("com.mysql.cj.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
+//		try {
+//	
+//			response.setContentType("html/text");
+//			Class .forName("com.mysql.cj.jdbc.Driver");
+//			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
 			String user_name=request.getParameter("u_name");
 			String user_pass= request.getParameter("u_pass");
-			PreparedStatement ps=con.prepareStatement("select * from user_info where user_name=? and user_pass=?");
+//		BankDAO userDetails = new BankDAO();
+			details_dto.setUname(user_name);
+			details_dto.setPassword(user_pass);
+			try {
+				if (detailsDao.validate(details_dto)) {
+					response.getWriter().append(personal);
+				
+					
+				}
+				else {
+					response.sendRedirect("Stmt");
+					
+				}
+			}catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			
+			
+//			PreparedStatement ps=con.prepareStatement("select * from user_info where user_name=? and user_pass=?");
+//		
+//			ps.setString(1,user_name);
+//			ps.setString(2,user_pass);
 //			
-//			uname,password,fullName,email,phno,address
-			ps.setString(1,user_name);
-			ps.setString(2,user_pass);
-//			ps.setString(3,fullName);
-//			ps.setString(4,email);
-//			ps.setString(5,phno);
-//			ps.setString(6,address);
+//			
+//			ResultSet rs=ps.executeQuery();
+//			while(rs.next()) {
+//				
+//			}
+//	if (user_name.isEmpty() || user_pass.isEmpty()) {
+//		String again= "<font color=\"red\">login failed , Try again!</font>\r\n";
+//		response.getWriter().append("<html><body>").append(again).append("</body></html>");
+//	}
+				
 			
+//			if(rs.next()) {
+//			
+//				
+//				}
+
+//			else {
+//
+////					String again= "<font color=\"red\">login failed , Try again!</font>\r\n";
+////				response.getWriter().append("<html><body>").append(again).append("</body></html>");
+//				
+////				response.sendRedirect("http://localhost:8080/Banking_application/bank.html");
+//				
+//
+//				
+//			}
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+		
+		
+		String uname=request.getParameter("regi_name");
+		String password=request.getParameter("regi_pass");
+		String fullName=request.getParameter("fullName");
+		String email=request.getParameter("email");
+		String phno=request.getParameter("phNo");
+		String address=request.getParameter("address");
+		
+		
+
+
+//		BankDTO details_dto =new BankDTO();
+		
+		details_dto.setUname(uname);
+		details_dto.setPassword(password);
+		details_dto.setFullName(fullName);
+		details_dto.setEmail(email);
+		details_dto.setPhno(phno);
+		details_dto.setAddress(address);
+		
+		try {
+			detailsDao.registerDetails(details_dto);
 			
-			ResultSet rs=ps.executeQuery();
-			if(rs.next()) {
-				response.getWriter().append(personal);
-//				out.println("success");
-				
-			}
-			else {
-
-					String again= "<font color=\"red\">login failed , Try again!</font>\r\n";
-				response.getWriter().append("<html><body>").append(again).append("</body></html>");
-				
-//				response.sendRedirect("http://localhost:8080/Banking_application/bank.html");
-				
-
-				
-			}
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
 }
+	
 }
 
 
