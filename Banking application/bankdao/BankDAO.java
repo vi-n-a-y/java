@@ -5,9 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.SQLException;
 
 import com.vin.bankdto.BankDTO;
+import com.vin.bankdto.AccountDTO;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpSession;
@@ -68,14 +71,19 @@ public class BankDAO {
 
 			System.out.println(ps);
 			ResultSet rs = ps.executeQuery();
-//				if(rs.next()){
-//					   System.out.println(rs.getString(1));
-//					   System.out.println(rs.getString(2));
-//					   System.out.println(rs.getString(3));
-//					   System.out.println(rs.getString(4));
-//					   System.out.println(rs.getString(5));
-//					
-//			}
+			// System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3));
+			while (rs.next()) {
+//			userDetails.setUserId(rs.getInt("user_id"));
+			userDetails.setUname(rs.getString("regi_name"));
+			userDetails.setPassword(rs.getString("regi_pass"));
+			userDetails.setEmail(rs.getString("email"));
+			userDetails.setPhno(rs.getString("phNo"));
+			userDetails.setAddress(rs.getString("address"));
+			userDetails.setFullName(rs.getString("fullName"));
+		}
+			if (userDetails.getUserId() == 0) {
+				userDetails = null;
+			}
 
 
 			status = rs.next();
@@ -86,6 +94,38 @@ public class BankDAO {
 		}
 		return status;
 	}
+	
+	
+//	public List<AccountDTO> getAccountDetails(String uname) {
+//
+//		List<AccountDTO> resBankAcctList = new ArrayList<AccountDTO>();
+//
+//		try {
+//			Class.forName("com.mysql.cj.jdbc.Driver");
+//			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_banking", "root", "root");
+//			Statement stmt = con.createStatement();
+//			ResultSet rs = stmt.executeQuery("select ba.* from bank_accounts ba, user_info u where ba.user_id = u.user_id and u.user_name='"+uname+"'");
+//			
+//			
+//			while (rs.next()) {
+//				AccountDTO bankAcctDto = new AccountDTO();
+//				
+//				bankAcctDto.setId(rs.getInt("id"));
+//				bankAcctDto.setAccountNumber(rs.getString("account_number"));
+//				bankAcctDto.setAcctType(rs.getString("account_type"));
+//				bankAcctDto.setBankName(rs.getString("bank_name"));
+//				bankAcctDto.setCurrBalance(rs.getDouble("current_balance"));
+//				bankAcctDto.setIfscCode(rs.getString("ifsc_code"));
+//				bankAcctDto.setUserId(rs.getInt("user_id"));
+//				
+//				resBankAcctList.add(bankAcctDto);
+//			}
+//		} catch (Exception ex) {
+//			ex.printStackTrace();
+//		}
+//
+//		return resBankAcctList;
+//	}
 
 	
 
