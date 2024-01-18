@@ -1,10 +1,13 @@
 //import jakarta.servlet.RequestDispatcher;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -167,6 +170,7 @@ public class Home_Page extends HttpServlet {
 //			response.setContentType("html/text");
 //			Class .forName("com.mysql.cj.jdbc.Driver");
 //			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
+		RequestDispatcher rd = request.getRequestDispatcher("/home.jsp");
 			String user_name=request.getParameter("u_name");
 			String user_pass= request.getParameter("u_pass");
 //		BankDAO userDetails = new BankDAO();
@@ -174,12 +178,16 @@ public class Home_Page extends HttpServlet {
 			details_dto.setPassword(user_pass);
 			try {
 				if (detailsDao.validate(details_dto)) {
-					response.getWriter().append(personal);
+//					response.getWriter().append(personal);
+					HttpSession session = request.getSession();
+					session.setAttribute("details", detailsDao);
+					rd.forward(request, response);
 				
 					
 				}
 				else {
-					response.sendRedirect("Stmt");
+//					response.sendRedirect("Stmt");
+					rd.forward(request, response);
 					
 				}
 			}catch (ClassNotFoundException e) {
