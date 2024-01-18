@@ -4,90 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bank Application</title>
-<style>
-        .main_container{
-        width:100%;
-        min-height: 100vh;
-        background: linear-gradient(135deg,#4e085f,#153677);
-        padding:10px;
-    }
-    .credit{
-         background:linear-gradient(#ee8133,#1d8eb4); 
-        color:white;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        position: absolute;
-       top: 30%;
-       left:39%;
-       border:2px solid red;
-       padding:60px 30px;
-       
-    }
-    .info{
-            background:linear-gradient(#ee8133,#1d8eb4); 
-        color:white;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        position: absolute;
-       top: 12%;
-       left:39%;
-       border:2px solid red;
-       padding:50px 50px;
-        display: none; 
-        }
-        .sign_sub{
-        color:red;
-        background-color: white;
-        padding: 3px 15px;
-      margin:2px 5px 2px 5px; 
-        float:left;
-        }
-  .sign_regi{
-        color:red;
-        background-color: white;
-        padding: 3px 15px;
-       margin:2px 5px 2px 5px; 
-        float:left;
-
-    } 
-    .forgot{
-        color:red;
-        text-decoration: none;
-       padding: 3px 1px 3px 1px;       
-        float:left ;  
-    }
-    .forgot:hover{
-        color:orange;
-    }
-
-
-    .info_inp {
-        margin: 20px 20px;
-        height:20px;
-    }
-    .inp{
-    	margin-top:20px;
-    }
-    .regi_btn{
-        color:rgb(34, 20, 123);
-        background-color: white;
-       /*  padding:3px 15px; */
-        margin-left:20px;
-    } 
-      .regi_btn2{
-        color:rgb(34, 20, 123);
-        background-color: white;
-       /*  padding:3px 15px; */
-        margin-left:20px;
-        float:right;
-       
-    } 
-    .regi_div{
-    margin:10px 20px 10px 100px;
-    } 
-</style>
+<link rel="stylesheet" href="bank.css">
 </head>
 <body>
  
@@ -110,10 +27,10 @@
     </div>
     
    		 <div class="info" id="info">
-   		 
+   		 <form action="home" method="get">
    		 
             <table> 
-            	<form action="home" method="get">
+            	
                <tr><td><label>User Name :</label></td><td><input type="text" name="regi_name" class="info_inp"  placeholder="Enter your Name.."></td></tr>
                <tr ><td><label >Password :</label></td><td><input type="password"  name="regi_pass" class="info_inp"  placeholder="Enter password Here..."></td></tr>
                <tr ><td> <label>full Name :</label></td><td ><input type="text" name="fullName"  class="info_inp"  placeholder="Enter full Name Here..."></td></tr>
