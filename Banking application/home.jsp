@@ -26,42 +26,44 @@
             <button class="sign">logout</button>       
         </div>
     <div class="pers_info">
+    <h1 class="acc_head">User Details</h1>
         <table>
                
-            <tr ><td><label >User Info :  </label></td><td><input type="text" name="info_user"  value= "" class="info_text" ></td></tr>
-            <tr ><td><label >Full Name : </label></td><td ><input type="text"  name="info_pass" value= "" class="info_text"  ></td></tr>
-            <tr ><td><label >Phone Number :  </label></td><td><input type="text" name="info_phone"  value= "" class="info_text" ></td></tr>
-            <tr ><td><label >Email :  </label></td><td><input type="text" name="info_email"  value= "" class="info_text"  ></td></tr>
+            <tr ><td><label >User Info :  </label></td><td><input type="text" name="info_user"  value= "<% %>" class="info_text" ></td></tr>
+            <tr ><td><label >Full Name : </label></td><td ><input type="text"  name="info_pass" value= "<% %>" class="info_text"  ></td></tr>
+            <tr ><td><label >Phone Number :  </label></td><td><input type="text" name="info_phone"  value= "<% %>" class="info_text" ></td></tr>
+            <tr ><td><label >Email :  </label></td><td><input type="text" name="info_email"  value= "<% %>" class="info_text"  ></td></tr>
               
         </table> 
 
     </div>
     <div class="acc_info">
-        <h1 class="acc_head">Account details</h1>
+        <h1 class="acc_head">Account Details</h1>
         <button>Add Account</button>
             <table>
                        
                     <tr ><td><label >Accounts :  </label></td><td><input type="radio" name="account_info"  class="info_text" checked ></td></tr>
-                    <tr ><td><label >IFSC Code :  </label></td><td><input type="text" name="info_user"  class="info_text" value="" ></td></tr>
-                    <tr ><td><label >Account Type : </label></td><td ><input type="text"  name="info_pass" class="info_text" value="" ></td></tr>
-                    <tr ><td><label >Current Balance :  </label></td><td><input type="text" name="info_phone"  class="info_text"value="" ></td></tr>
-                    <tr ><td><label >Last Transcation Date :  </label></td><td><input type="text" name="info_email"  class="info_text" value="" ></td></tr>
+                    <tr ><td><label >IFSC Code :  </label></td><td><input type="text" name="info_user"  class="info_text" value="<% %>" ></td></tr>
+                    <tr ><td><label >Account Type : </label></td><td ><input type="text"  name="info_pass" class="info_text" value="<% %>" ></td></tr>
+                    <tr ><td><label >Current Balance :  </label></td><td><input type="text" name="info_phone"  class="info_text"value="<% %>" ></td></tr>
+                    <tr ><td><label >Last Transcation Date :  </label></td><td><input type="text" name="info_email"  class="info_text" value="<% %>" ></td></tr>
                       
                 </table> 
     </div>
     <button class="sign" id="btn" onclick="hide()">Statement Form</button>
     <div class="para" id="para">
         <!-- <button style="float:right; color:red;">logout</button> -->
-        <div>
-        <h1 align="center" style="color:red">statement Form</h1>
-        </div>
-        <div align="center" style="margin-top:50px;">       
+        <div class=pers_info>
+        <h1 class="acc_head">statement Form</h1>
+        
+       
+        
+         <div  class="min_stm">       
         <label>Start Date : </label>
         <input type="date" placeholder="select start date">
         <label>End Date :</label>
         <input type="date" placeholder="select end date">
         </div>
-        <div align="center" style="margin-top:50px;">
         <table border=1>
         <caption ><font >Mini-Statement Form</font></caption>
         <tr><th>S.no</th><th>Date</th><th>Description</th><th>Amount</th><th>From Account No:</th><th>To Account No</th><th>Current Balance</th>
@@ -81,6 +83,8 @@
         </div>
         
         </div>
+        </div>
+        
 
 
     
