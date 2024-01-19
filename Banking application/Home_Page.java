@@ -14,6 +14,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.lang.*;
 
 import com.vin.bankdto.BankDTO;
 import com.vin.bankdao.BankDAO;
@@ -24,6 +25,12 @@ public class Home_Page extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	  BankDAO detailsDao=new BankDAO();
 	  BankDTO details_dto =new BankDTO();
+	  
+	  
+	
+	  
+	  
+	  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request,response);
 		
@@ -41,7 +48,7 @@ public class Home_Page extends HttpServlet {
 //		PrintWriter out= response.getWriter();
 //		out.println("register successfully");
 
-		PrintWriter out= response.getWriter();
+		PrintWriter pw= response.getWriter();
 		String personal="<!DOCTYPE html>\r\n"
 				+ "<html lang=\"en\">\r\n"
 				+ "<head>\r\n"
@@ -126,10 +133,10 @@ public class Home_Page extends HttpServlet {
 				+ "<div class=\"pers_info\">\r\n"
 				+ "    <table>\r\n"
 				+ "           \r\n"
-				+ "        <tr ><td><label >User Name :  </label></td><td><input type=\"text\" name=\"info_user\"  class=\"info_text\" value=\"user_name\" ></td></tr>\r\n"
-				+ "        <tr ><td><label >Full Name : </label></td><td ><input type=\"text\"  name=\"info_pass\" class=\"info_text\" value=\"fullName\"  ></td></tr>\r\n"
-				+ "        <tr ><td><label >Phone Number :  </label></td><td><input type=\"text\" name=\"info_phone\"  class=\"info_text\" value=\"phno\" ></td></tr>\r\n"
-				+ "        <tr ><td><label >Email :  </label></td><td><input type=\"text\" name=\"info_email\"  class=\"info_text\" value=\"email\" ></td></tr>\r\n"
+				+ "        <tr ><td><label >User Name :  </label></td><td><input type=\"text\" name=\"info_user\"  class=\"info_text\" value="+details_dto.getUname()+" ></td></tr>\r\n"
+				+ "        <tr ><td><label >Full Name : </label></td><td ><input type=\"text\"  name=\"info_pass\" class=\"info_text\" value="+details_dto.getFullName()+"  ></td></tr>\r\n"
+				+ "        <tr ><td><label >Phone Number :  </label></td><td><input type=\"text\" name=\"info_phone\"  class=\"info_text\" value="+details_dto.getPhno()+" ></td></tr>\r\n"
+				+ "        <tr ><td><label >Email :  </label></td><td><input type=\"text\" name=\"info_email\"  class=\"info_text\" value="+details_dto.getEmail()+" ></td></tr>\r\n"
 				+ "          \r\n"
 				+ "    </table> \r\n"
 				+ "</div>\r\n"
@@ -145,16 +152,6 @@ public class Home_Page extends HttpServlet {
 				+ "          \r\n"
 				+ "    </table> \r\n"
 				+ "\r\n"
-//				+ "    <table>\r\n"
-//				+ "           \r\n"
-//				+ "        <tr ><td><label >Accounts :  </label></td><td><input type=\"radio\" name=\"account_info\"  class=\"info_text\" ></td></tr>\r\n"
-//				+ "        <tr ><td><label >IFSC Code :  </label></td><td><input type=\"text\" name=\"info_user\"  class=\"info_text\" ></td></tr>\r\n"
-//				+ "        <tr ><td><label >Account Type : </label></td><td ><input type=\"text\"  name=\"info_pass\" class=\"info_text\"  ></td></tr>\r\n"
-//				+ "        <tr ><td><label >Current Balance :  </label></td><td><input type=\"text\" name=\"info_phone\"  class=\"info_text\" ></td></tr>\r\n"
-//				+ "        <tr ><td><label >Last Transcation Date :  </label></td><td><input type=\"text\" name=\"info_email\"  class=\"info_text\"  ></td></tr>\r\n"
-//				+ "          \r\n"
-//				+ "    </table> \r\n"
-//				+ "\r\n"
 				+ "</div>\r\n"
 				+ "    </div>\r\n"
 				+ "</body>\r\n"
@@ -165,34 +162,41 @@ public class Home_Page extends HttpServlet {
 
 		
 
-//		try {
-//	
-//			response.setContentType("html/text");
-//			Class .forName("com.mysql.cj.jdbc.Driver");
-//			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
-		RequestDispatcher rd = request.getRequestDispatcher("/home.jsp");
+	RequestDispatcher rd = request.getRequestDispatcher("/home.jsp");
 			String user_name=request.getParameter("u_name");
 			String user_pass= request.getParameter("u_pass");
-//		BankDAO userDetails = new BankDAO();
-			details_dto.setUname(user_name);
-			details_dto.setPassword(user_pass);
-			try {
-				if (detailsDao.validate(details_dto)) {
-//					response.getWriter().append(personal);
+			BankDTO  user=detailsDao.getUserDetails(user_name);
+			if(user!=null) {
+				if (user.getPassword().equals(user_pass)) {
 					HttpSession session = request.getSession();
-					session.setAttribute("details", detailsDao);
+					session.setAttribute("user", user);
 					rd.forward(request, response);
-				
-					
 				}
-				else {
-//					response.sendRedirect("Stmt");
-					rd.forward(request, response);
-					
-				}
-			}catch (ClassNotFoundException e) {
-				e.printStackTrace();
 			}
+			
+
+//		BankDAO userDetails = new BankDAO();
+//			details_dto.setUname(user_name);
+//			details_dto.setPassword(user_pass);
+//			
+//		
+//			try {
+//				if (detailsDao.validate(details_dto)) {
+//					response.getWriter().append(personal);
+////					HttpSession session = request.getSession();
+////					session.setAttribute("details", detailsDao);
+////					rd.forward(request, response);
+//				
+//					
+//				}
+//				else {
+//					response.sendRedirect("Stmt");
+////					rd.forward(request, response);
+//					
+//				}
+//			}catch (ClassNotFoundException e) {
+//				e.printStackTrace();
+//			}
 			
 			
 //			PreparedStatement ps=con.prepareStatement("select * from user_info where user_name=? and user_pass=?");
@@ -243,7 +247,7 @@ public class Home_Page extends HttpServlet {
 		
 
 
-//		BankDTO details_dto =new BankDTO();
+		BankDTO details_dto =new BankDTO();
 		
 		details_dto.setUname(uname);
 		details_dto.setPassword(password);
@@ -252,13 +256,13 @@ public class Home_Page extends HttpServlet {
 		details_dto.setPhno(phno);
 		details_dto.setAddress(address);
 		
-		try {
-			detailsDao.registerDetails(details_dto);
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//		detailsDao.registerDetails(details_dto);
+//			
+//		} catch (ClassNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		
 }
