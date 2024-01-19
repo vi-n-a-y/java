@@ -27,12 +27,13 @@
         </div>
     <div class="pers_info">
     <h1 class="acc_head">User Details</h1>
+<% BankDTO details = (BankDTO) session.getAttribute("detailsDao"); %>
         <table>
                
-            <tr ><td><label >User Info :  </label></td><td><input type="text" name="info_user"  value= "<% %>" class="info_text" ></td></tr>
-            <tr ><td><label >Full Name : </label></td><td ><input type="text"  name="info_pass" value= "<% %>" class="info_text"  ></td></tr>
-            <tr ><td><label >Phone Number :  </label></td><td><input type="text" name="info_phone"  value= "<% %>" class="info_text" ></td></tr>
-            <tr ><td><label >Email :  </label></td><td><input type="text" name="info_email"  value= "<% %>" class="info_text"  ></td></tr>
+            <tr ><td><label >User Info :  </label></td><td><input type="text" name="info_user"  value= "<% out.print(details.getUname()); %>" class="info_text" ></td></tr>
+            <tr ><td><label >Full Name : </label></td><td ><input type="text"  name="info_pass" value= "<% out.print(details.getFullName()); %>" class="info_text"  ></td></tr>
+            <tr ><td><label >Phone Number :  </label></td><td><input type="text" name="info_phone"  value= "<%= "+91-"+details.getPhno() %>" class="info_text" ></td></tr>
+            <tr ><td><label >Email :  </label></td><td><input type="text" name="info_email"  value= "<% out.print(details.getEmail()); %>" class="info_text"  ></td></tr>
               
         </table> 
 
@@ -40,24 +41,19 @@
     <div class="acc_info">
         <h1 class="acc_head">Account Details</h1>
         <button>Add Account</button>
-            <table>
-                       
+            <table>                       
                     <tr ><td><label >Accounts :  </label></td><td><input type="radio" name="account_info"  class="info_text" checked ></td></tr>
                     <tr ><td><label >IFSC Code :  </label></td><td><input type="text" name="info_user"  class="info_text" value="<% %>" ></td></tr>
                     <tr ><td><label >Account Type : </label></td><td ><input type="text"  name="info_pass" class="info_text" value="<% %>" ></td></tr>
                     <tr ><td><label >Current Balance :  </label></td><td><input type="text" name="info_phone"  class="info_text"value="<% %>" ></td></tr>
-                    <tr ><td><label >Last Transcation Date :  </label></td><td><input type="text" name="info_email"  class="info_text" value="<% %>" ></td></tr>
-                      
+                    <tr ><td><label >Last Transcation Date :  </label></td><td><input type="text" name="info_email"  class="info_text" value="<% %>" ></td></tr>                      
                 </table> 
     </div>
     <button class="sign" id="btn" onclick="hide()">Statement Form</button>
     <div class="para" id="para">
         <!-- <button style="float:right; color:red;">logout</button> -->
         <div class=pers_info>
-        <h1 class="acc_head">statement Form</h1>
-        
-       
-        
+        <h1 class="acc_head">statement Form</h1>   
          <div  class="min_stm">       
         <label>Start Date : </label>
         <input type="date" placeholder="select start date">
@@ -76,19 +72,12 @@
         <tr><td>7</td><td>30/03/2022</td><td>Hotel</td><td>9999</td><td>365705875453</td><td>XXXX4862</td><td>62549.00</td></tr>
         <tr><td>8</td><td>01/04/2022</td><td>salary</td><td>6555</td><td>XXXX9997</td><td>365705875453</td><td>55994.00</td></tr>
         <tr><td>9</td><td>02/04/2022</td><td>shopping</td><td>7999</td><td>365705875453</td><td>XXXX7845</td><td>117995.00</td></tr>
-        <tr><td>10</td><td>07/04/2022</td><td>transaction</td><td>2500</td><td>365705875453</td><td>XXXX5968</td><td>115495.00</td></tr>
-        
-        </table>
-        
-        </div>
-        
+        <tr><td>10</td><td>07/04/2022</td><td>transaction</td><td>2500</td><td>365705875453</td><td>XXXX5968</td><td>115495.00</td></tr>   
+        </table>   
+        </div>        
         </div>
         </div>
-        
-
-
-    
-        <script>
+    <script>
              function hide(){
             
             var par=document.getElementById("para");
@@ -102,91 +91,5 @@
         }
    
         </script>
-
-
-
-
-
-
-
-
-
-
-
-
-<%-- </head>
-
-<body>
-	<% BankDTO details = (BankDTO) session.getAttribute("detailsDao"); %>
-	<h1 style="text-align: center">
-		<% out.print(details.getUname().toUpperCase()); %>
-	</h1>
-	
-
-	<div style="display: flex; justify-content: space-between;">
-		<h2>
-			PhNo:<%= "+91-"+details.getPhno() %>
-		</h2>
-		<h2>
-			Email:<% out.print(details.getEmail()); %>
-		</h2>
-		<h2>
-			Address:<% out.print(details.getAddress()); %>
-		</h2>
-	</div>
-
-
-	<form action="" method="post">
-		<input type="submit" value="Add Account" />
-	</form> --%>
-
-<%-- 	<%
-	BankDAO dao = new BankDAO();
-	List<AccountDTO> acctList = dao.getAccountDetails(details.getUname());
-	%>
-	<form>
-		<table>
-			<%
-			for (AccountDTO acct : acctList) {
-			%>
-			<tr>
-				<td><input type="radio"
-					id="<%out.print(acct.getAccountNumber());%>" name='acct_no_group' />
-				</td>
-				<td>
-				<div style="display: flex; justify-content: space-between;">
-					<h2>
-						<% out.print(acct.getAccountNumber());%>:
-					</h2> 
-					<h2>
-						<% out.print(acct.getIfscCode()); %>
-					</h2>
-				</div>	
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-				</td>
-				<td>
-				<div style="display: flex; justify-content: space-between;">
-					<h3>
-						<% out.print(acct.getBankName()); %>
-					</h3>
-					<h3>
-						<% out.print(acct.getAcctType()); %>
-					</h3>
-					<h3>
-						<% out.print(acct.getCurrBalance()); %>
-					</h3>
-					<h3>last_txn_date</h3>
-					</div>
-				</td>
-			</tr>
-			<%
-		}
-		%>
-		</table>
-	</form> --%>
 </body>
 </html>
