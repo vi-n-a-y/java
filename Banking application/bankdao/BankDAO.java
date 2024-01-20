@@ -32,93 +32,38 @@ public class BankDAO {
 	}
 	
 
-//	public int registerDetails(BankDTO details)throws ClassNotFoundException{
-//		String Insert_user_info="INSERT INTO user_info"+
-//				"(user_name,user_pass,user_full_name,user_mail,user_ph,user_address)values"+
-//				"(?,?,?,?,?,?)";
-//	
-//		int result=0;
-//		
-//		
-//		try {
-//			Class.forName("com.mysql.cj.jdbc.Driver");
-//			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
-//			Statement stmt = con.createStatement();
-////		ResultSet rs = stmt.executeQuery("select * from user_info");
-//			PreparedStatement ps=con.prepareStatement(Insert_user_info);
-//			
-////			ps.setInt(1,1);
-//			ps.setString(1,details.getUname());
-//			ps.setString(2,details.getPassword());
-//			ps.setString(3,details.getFullName());
-//		    ps.setString(4,details.getEmail());
-//			ps.setString(5,details.getPhno());
-//			ps.setString(6,details.getAddress());
-//			
-//			System.out.println("the output is :"+ps);
-//			result=ps.executeUpdate();
-//	
-//		}catch(Exception ex) {
-//			ex.printStackTrace();
-//		}
-//		
-//		return result;
-//	}
+	public int registerDetails(BankDTO details)throws ClassNotFoundException{
+		String Insert_user_info="INSERT INTO user_info"+
+				"(user_name,user_pass,user_full_name,user_mail,user_ph,user_address)values"+
+				"(?,?,?,?,?,?)";
 	
-	
-	
-	
-	public boolean validate( BankDTO userDetails) throws ClassNotFoundException {
-	
-		boolean status = false;
-
-		Class.forName("com.mysql.jdbc.Driver");
-
-		try (Connection connection = DriverManager
-				.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
-
-				// Step 2:Create a statement using connection object
-				PreparedStatement ps = connection.prepareStatement("select * from user_info where user_name=? and user_pass=? ")) {
-			ps.setString(1, userDetails.getUname());
-			ps.setString(2, userDetails.getPassword());
-//			ps.setString(3, userDetails.getFullName());
-//			ps.setString(4, userDetails.getEmail());
-//			ps.setString(5, userDetails.getPhno());
-//			ps.setString(6, userDetails.getAddress());
-
+		int result=0;
 		
-
-			System.out.println(ps);
-			ResultSet rs = ps.executeQuery();
-			if(rs.next()) {
-		 System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)+" "+rs.getString(7));
-//			userDetails.setUserId(rs.getInt("user_id"));
-//			userDetails.setUname(rs.getString("user_name"));
-//			userDetails.setPassword(rs.getString("user_pass"));
-//			userDetails.setFullName(rs.getString("user_full_name"));
-//			userDetails.setEmail(rs.getString("user_mail"));
-//			userDetails.setPhno(rs.getString("user_ph"));
-//			userDetails.setAddress(rs.getString("user_address"));
-//
-			}
-//			if (userDetails.getUserId() == 0) {
-//				userDetails = null;
-//			}
-
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
+			Statement stmt = con.createStatement();
+//		ResultSet rs = stmt.executeQuery("select * from user_info");
+			PreparedStatement ps=con.prepareStatement(Insert_user_info);
 			
-
-
-	status = rs.next();
-		} 
-			catch (SQLException e) {
-			// process sql exception
-			e.printStackTrace(System.err);
+//			ps.setInt(1,1);
+			ps.setString(1,details.getUname());
+			ps.setString(2,details.getPassword());
+			ps.setString(3,details.getFullName());
+		    ps.setString(4,details.getEmail());
+			ps.setString(5,details.getPhno());
+			ps.setString(6,details.getAddress());
+			
+			System.out.println("the output is :"+ps);
+			result=ps.executeUpdate();
+	
+		}catch(Exception ex) {
+			ex.printStackTrace();
 		}
-	return status;
-	
+		
+		return result;
 	}
-	
-	
 	
 	public BankDTO getUserDetails(String uname) {
 
@@ -131,15 +76,15 @@ public class BankDAO {
 			ResultSet rs = stmt.executeQuery("select * from user_info where user_name='" + uname + "'");
 
 			while (rs.next()) {
-				// System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3));
+				 System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3));
 				resUser.setUserId(rs.getInt("user_id"));
 				resUser.setUname(rs.getString("user_name"));
 				resUser.setPassword(rs.getString("user_pass"));
-				resUser.setEmail(rs.getString("user_email"));
+				resUser.setEmail(rs.getString("user_mail"));
 				resUser.setPhno(rs.getString("user_ph"));
-
 				resUser.setAddress(rs.getString("user_address"));
 				resUser.setFullName(rs.getString("user_full_name"));
+//				System.out.println(rs.getString(4));
 			}
 			if (resUser.getUserId() == 0) {
 				resUser = null;
