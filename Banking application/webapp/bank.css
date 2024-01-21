@@ -77,7 +77,7 @@
        color:rgb(0, 0, 160);
        background-color: white;
        padding:3px 15px;
-        /*  margin-left:20px;  */
+       
        
       position:absolute;
       top:473px;
@@ -86,16 +86,6 @@
       
      
    }
-   
-   
-   
-   
-  /* jsp */
-  
-  
-  
-
- 
 
         .bg_black{
             background-color: black;
