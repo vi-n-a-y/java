@@ -10,7 +10,8 @@ import java.io.IOException;
 import com.vin.bankdao.BankDAO;
 import com.vin.bankdto.BankDTO;
 
-@WebServlet("/regi")
+
+@WebServlet("/Regi")
 public class Registration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -20,10 +21,9 @@ public class Registration extends HttpServlet {
     }
     BankDAO detailsDao=new BankDAO();
 
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-//	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request,response);	
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -49,6 +49,9 @@ public class Registration extends HttpServlet {
 		
 		try {
 		detailsDao.registerDetails(details_dto);
+		if(details_dto!=null) {
+			response.sendRedirect("bank.html");
+		}
 			
 		} catch (ClassNotFoundException e) {
 
@@ -56,7 +59,7 @@ public class Registration extends HttpServlet {
 		}
 		
 		
-		doGet(request, response);
+		
 	}
 
 }
