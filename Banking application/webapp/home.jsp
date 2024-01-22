@@ -20,8 +20,8 @@
             <b> <a class="logo1" href="#" >Pir@es.Bank</a></b>
             <a href="#" >MENU</a>
             <a href="#" >SERVICES</a>
-            <a href="#" >STATEMENT</a>
-            <a href="#" >ADD MONEY</a>
+            <a href="Statement.jsp" >STATEMENT</a>
+            <a href="SendMoney.jsp" >SEND MONEY</a>
             <input type="text" placeholder="search">
             <button class="search">search</button>
             <button class="sign">logout</button>       
@@ -53,19 +53,21 @@
                        
                     <tr ><td><label >Accounts :  </label></td><td><input type="radio" name="acc_info"  class="info_text" checked ></td></tr>
                     
-                    <tr ><td><label >Account Type : </label></td><td ><input type="text"  name="acc_type" class="info_text" value="<%= data.getAcctType()%>" ></td></tr>
+                    
                     <tr ><td><label >Account Number :  </label></td><td><input type="text" name="acc_nmbr"  class="info_text" value="<%= data.getAccountNumber() %>" ></td></tr>
                     <tr ><td><label >Bank Name :  </label></td><td><input type="text" name="acc_bank_name"  class="info_text" value="<%= data.getBankName() %>" ></td></tr>
-                    <tr ><td><label >IFSC Code :  </label></td><td><input type="text" name="acc_ifsc"  class="info_text" value="<%= data.getIfscCode() %>" ></td></tr>
+                    <tr ><td><label >IFSC Code :  </label></td><td><input type="text" name="acc_ifsc"  class="info_text" value="<%= data.getIfscCode() %>" ></td></tr>                
+                   <tr ><td><label >Account Type : </label></td><td ><input type="text"  name="acc_type" class="info_text" value="<%= data.getAcctType()%>" ></td></tr>
                     <tr ><td><label >Current Balance :  </label></td><td><input type="text" name="acc_bal"  class="info_text"value="<%= data.getCurrBalance()%>" ></td></tr>
                      
                 </table>
      <%--      <%} %> --%>
     <%--     <%} %>  --%>        
     </div> 
-    <form action="Statement.jsp" >
+    
+    <!-- <form action="Statement.jsp" >
     <button class="sign" id="btn" onclick="hide()">Statement Form</button>
-    </form>
+    </form> -->
         </div>
  
 
