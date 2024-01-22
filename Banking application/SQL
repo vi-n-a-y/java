@@ -4,16 +4,22 @@ create table acc_types(
      primary key(acc_type_id)
 );
 
-CREATE TABLE bank_info(
-		acc_no int AUTO_INCREMENT,
-        acc_holder_id int NOT NULL UNIQUE,
-        curr_bal double,
-        last_txn_date_time datetime,	
-        acc_ifsc_code varchar(10) NOT NULL,
-        acc_type_id int NOT NULL DEFAULT 1,
-        PRIMARY KEY (acc_no),
-		FOREIGN KEY (acc_type_id) REFERENCES acc_types(acc_type_id)
+create table bank_info(
+id int auto_increment primary key,
+acc_nmbr varchar(30) NOT NULL,
+bank_name VARCHAR(30) NOT NULL,
+ifsc_code VARCHAR(15) NOT NULL ,
+acc_type VARCHAR(20) NOT NULL,
+curr_bal DOUBLE NOT NULL,
+user_id INT NOT NULL,
+FOREIGN KEY (user_id) REFERENCES user_info(user_id)
 );
+SELECT * FROM bank_info;
+SELECT * FROM user_info;
+SELECT * FROM bank_info;
+INSERT INTO bank_info(acc_nmbr,bank_name,ifsc_code,acc_type,curr_bal,user_id) 
+values("45673","State Bank Of India","SBI0HYD","SAVINGS",5464.97,132);
+
 
 create table account_types(
 	account_type_id int,
