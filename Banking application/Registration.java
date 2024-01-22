@@ -50,7 +50,7 @@ public class Registration extends HttpServlet {
 		try {
 		detailsDao.registerDetails(details_dto);
 		if(details_dto!=null) {
-			response.sendRedirect("bank.html");
+			response.sendRedirect("bank.jsp");
 		}
 			
 		} catch (ClassNotFoundException e) {
