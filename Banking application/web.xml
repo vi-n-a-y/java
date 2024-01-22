@@ -33,7 +33,7 @@
     <description></description>
     <display-name>BankDAO</display-name>
     <servlet-name>BankDAO</servlet-name>
-    <servlet-class>com.vin.BankDAO</servlet-class>
+    <servlet-class>com.vin.bankdao</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>BankDAO</servlet-name>
@@ -43,10 +43,30 @@
     <description></description>
     <display-name>BankDTO</display-name>
     <servlet-name>BankDTO</servlet-name>
-    <servlet-class>com.vin.BankDTO</servlet-class>
+    <servlet-class>com.vin.bankdto</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>BankDTO</servlet-name>
     <url-pattern>/DTO</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Registration</display-name>
+    <servlet-name>Registration</servlet-name>
+    <servlet-class>Registration</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Registration</servlet-name>
+    <url-pattern>/Regi</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AccountDetails</display-name>
+    <servlet-name>AccountDetails</servlet-name>
+    <servlet-class>AccountDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccountDetails</servlet-name>
+    <url-pattern>/AccDet</url-pattern>
   </servlet-mapping>
 </web-app>
