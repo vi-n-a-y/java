@@ -61,6 +61,7 @@ public class BankDAO {
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
+		System.out.println(result);
 		
 		return result;
 	}
@@ -76,7 +77,7 @@ public class BankDAO {
 			ResultSet rs = stmt.executeQuery("select * from user_info where user_name='" + uname + "'");
 
 			while (rs.next()) {
-				 System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3));
+		
 				resUser.setUserId(rs.getInt("user_id"));
 				resUser.setUname(rs.getString("user_name"));
 				resUser.setPassword(rs.getString("user_pass"));
@@ -96,6 +97,74 @@ public class BankDAO {
 		return resUser;
 	}
 	
+	
+	public AccountDTO getAccDetails(int id) {
+
+		AccountDTO accDetails = new AccountDTO();
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from bank_info where user_id=" + id );
+
+			while (rs.next()) {
+				 System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3));
+//				accDetails.setId(rs.getInt("id"));
+				accDetails.setAccountNumber(rs.getString("acc_nmbr"));
+				accDetails.setBankName(rs.getString("bank_name"));
+				accDetails.setIfscCode(rs.getString("ifsc_code"));
+				accDetails.setAcctType(rs.getString("acc_type"));
+				accDetails.setCurrBalance(rs.getDouble("curr_bal"));
+				accDetails.setUserId(rs.getInt("user_id"));
+				
+//				System.out.println(rs.getString(4));
+			}
+			if (accDetails.getUserId() == 0) {
+				accDetails = null;
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		return accDetails;
+	}
+	
+	
+	
+	
+	public int setAccDetails(AccountDTO setData)throws ClassNotFoundException{
+		String Insert_data="INSERT INTO bank_info" + 
+				"(acc_nmbr,bank_name,ifsc_code,acc_type,curr_bal,user_id) values"+
+				 "(?,?,?,?,?,?)";
+	
+		int data=0;
+		
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
+			Statement stmt = con.createStatement();
+//		ResultSet rs = stmt.executeQuery("select * from user_info");
+			PreparedStatement ps=con.prepareStatement(Insert_data);
+			
+//			ps.setInt(1,1);
+			ps.setString(1,setData.getAccountNumber());
+			ps.setString(2,setData.getBankName());
+			ps.setString(3,setData.getIfscCode());
+		    ps.setString(4,setData.getAcctType());
+			ps.setDouble(5,setData.getCurrBalance());
+			ps.setInt(6,setData.getUserId());
+			
+			System.out.println("the output is :"+ps);
+			data=ps.executeUpdate();
+	
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return data;
+	}
 	
 //	public List<AccountDTO> getAccountDetails(String uname) {
 //
