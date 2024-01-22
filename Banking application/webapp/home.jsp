@@ -20,14 +20,15 @@
             <b> <a class="logo1" href="#" >Pir@es.Bank</a></b>
             <a href="#" >MENU</a>
             <a href="#" >SERVICES</a>
-            <a href="#" >JOBS</a>
-            <a href="#" >CONTACT US</a>
+            <a href="#" >STATEMENT</a>
+            <a href="#" >ADD MONEY</a>
             <input type="text" placeholder="search">
             <button class="search">search</button>
             <button class="sign">logout</button>       
         </div>
     <div class="pers_info">
     <h1 class="acc_head">User Details</h1>
+   
         <table>
                
             <tr ><td><label >User Name :  </label></td><td><input type="text" name="info_user"  value= "<%= user.getUname() %>" class="info_text" ></td></tr>
@@ -38,22 +39,35 @@
         </table> 
 
     </div>
-    <div class="acc_info">
+   		 <div class="acc_info">
+   
+    <% AccountDTO data = (AccountDTO) session.getAttribute("data"); %>
+    
         <h1 class="acc_head">Account Details</h1>
+<%--         <%if(data==null){ %> --%>
         <button>Add Account</button>
+<%--         <%} %>
+        <%else { %> --%>
+       <%--  <%while(data){ %> --%>
             <table>
                        
-                    <tr ><td><label >Accounts :  </label></td><td><input type="radio" name="account_info"  class="info_text" checked ></td></tr>
-                    <tr ><td><label >IFSC Code :  </label></td><td><input type="text" name="info_user"  class="info_text" value="<% %>" ></td></tr>
-                    <tr ><td><label >Account Type : </label></td><td ><input type="text"  name="info_pass" class="info_text" value="<% %>" ></td></tr>
-                    <tr ><td><label >Current Balance :  </label></td><td><input type="text" name="info_phone"  class="info_text"value="<% %>" ></td></tr>
-                    <tr ><td><label >Last Transcation Date :  </label></td><td><input type="text" name="info_email"  class="info_text" value="<% %>" ></td></tr>
-                      
-                </table> 
-    </div>
+                    <tr ><td><label >Accounts :  </label></td><td><input type="radio" name="acc_info"  class="info_text" checked ></td></tr>
+                    
+                    <tr ><td><label >Account Type : </label></td><td ><input type="text"  name="acc_type" class="info_text" value="<%= data.getAcctType()%>" ></td></tr>
+                    <tr ><td><label >Account Number :  </label></td><td><input type="text" name="acc_nmbr"  class="info_text" value="<%= data.getAccountNumber() %>" ></td></tr>
+                    <tr ><td><label >Bank Name :  </label></td><td><input type="text" name="acc_bank_name"  class="info_text" value="<%= data.getBankName() %>" ></td></tr>
+                    <tr ><td><label >IFSC Code :  </label></td><td><input type="text" name="acc_ifsc"  class="info_text" value="<%= data.getIfscCode() %>" ></td></tr>
+                    <tr ><td><label >Current Balance :  </label></td><td><input type="text" name="acc_bal"  class="info_text"value="<%= data.getCurrBalance()%>" ></td></tr>
+                     
+                </table>
+     <%--      <%} %> --%>
+    <%--     <%} %>  --%>        
+    </div> 
     <form action="Statement.jsp" >
     <button class="sign" id="btn" onclick="hide()">Statement Form</button>
     </form>
         </div>
+ 
+
 </body>
 </html>
