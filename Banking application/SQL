@@ -49,3 +49,14 @@ SELECT * FROM user_info;
 ALTER TABLE user_info
 MODIFY user_id INT AUTO_INCREMENT;
 SELECT * FROM user_info;
+
+
+delete from user_info
+where user_id = 105;
+set sql_safe_updates=0;
+
+//for add money
+
+update bank_info
+set curr_bal=curr_bal+100
+where user_id=101;
