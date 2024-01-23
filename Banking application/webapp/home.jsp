@@ -49,7 +49,10 @@
 <%--         <%} %>
         <%else { %> --%>
        <%--  <%while(data){ %> --%>
+     
+       <% if(data!=null){ %>
             <table>
+            
                        
                     <tr ><td><label >Accounts :  </label></td><td><input type="radio" name="acc_info"  class="info_text" checked ></td></tr>
                     
@@ -61,8 +64,26 @@
                     <tr ><td><label >Current Balance :  </label></td><td><input type="text" name="acc_bal"  class="info_text"value="<%= data.getCurrBalance()%>" ></td></tr>
                      
                 </table>
-     <%--      <%} %> --%>
-    <%--     <%} %>  --%>        
+               
+                
+                
+                <%} else{ %>
+                <form action="AccDet">
+                <h5>enter the values</h5>
+                  <table>
+                       
+                    <tr ><td><label >Accounts :  </label></td><td><input type="radio" name="acc_info"  class="info_text" checked ></td></tr>                   
+                    <tr ><td><label >Account Number :  </label></td><td><input type="text" name="acc_nmbr"  class="info_text"  ></td></tr>
+                    <tr ><td><label >Bank Name :  </label></td><td><input type="text" name="acc_bank_name"  class="info_text"  ></td></tr>
+                    <tr ><td><label >IFSC Code :  </label></td><td><input type="text" name="acc_ifsc"  class="info_text"  ></td></tr>                
+                   <tr ><td><label >Account Type : </label></td><td ><input type="text"  name="acc_type" class="info_text"  ></td></tr>
+                    <tr ><td><label >Current Balance :  </label></td><td><input type="text" name="acc_bal"  class="info_text" ></td></tr>
+                     
+                </table>
+                <button>submit</button>
+                </form>
+          <%} %> 
+           
     </div> 
     
     <!-- <form action="Statement.jsp" >

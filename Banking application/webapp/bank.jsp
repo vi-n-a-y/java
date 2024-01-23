@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" %>
-    
+    pageEncoding="ISO-8859-1"%>
 <!Doctype html>
 <html lang="en">
 <head>
@@ -13,7 +12,6 @@
  
 
     <div class="main_container">
-    
       <div class="credit" id="credit">
 			
 			<div> 
