@@ -9,11 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.lang.*;
 
 import com.vin.bankdto.AccountDTO;
@@ -72,10 +68,10 @@ public class Home_Page extends HttpServlet {
 							rd.forward(request, response);
 				}
 			}
-//			else {
-//				response.sendRedirect("Stmt");
-//			
-//			}
+			else {
+				response.sendRedirect("bank.jsp");
+			
+			}
 				
 
 				 
