@@ -61,7 +61,7 @@ public class BankDAO {
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
-		System.out.println(result);
+		System.out.println("THE RESULT IS :"+result);
 		
 		return result;
 	}
@@ -117,8 +117,6 @@ public class BankDAO {
 				accDetails.setAcctType(rs.getString("acc_type"));
 				accDetails.setCurrBalance(rs.getDouble("curr_bal"));
 				accDetails.setUserId(rs.getInt("user_id"));
-				
-//				System.out.println(rs.getString(4));
 			}
 			if (accDetails.getUserId() == 0) {
 				accDetails = null;
@@ -129,18 +127,12 @@ public class BankDAO {
 
 		return accDetails;
 	}
-	
-	
-	
-	
 	public int setAccDetails(AccountDTO setData)throws ClassNotFoundException{
 		String Insert_data="INSERT INTO bank_info" + 
 				"(acc_nmbr,bank_name,ifsc_code,acc_type,curr_bal,user_id) values"+
 				 "(?,?,?,?,?,?)";
 	
 		int data=0;
-		
-		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
@@ -165,44 +157,5 @@ public class BankDAO {
 		
 		return data;
 	}
-	
-//	public List<AccountDTO> getAccountDetails(String uname) {
-//
-//		List<AccountDTO> resBankAcctList = new ArrayList<AccountDTO>();
-//
-//		try {
-//			Class.forName("com.mysql.cj.jdbc.Driver");
-//			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_banking", "root", "root");
-//			Statement stmt = con.createStatement();
-//			ResultSet rs = stmt.executeQuery("select ba.* from bank_accounts ba, user_info u where ba.user_id = u.user_id and u.user_name='"+uname+"'");
-//			
-//			
-//			while (rs.next()) {
-//				AccountDTO bankAcctDto = new AccountDTO();
-//				
-//				bankAcctDto.setId(rs.getInt("id"));
-//				bankAcctDto.setAccountNumber(rs.getString("account_number"));
-//				bankAcctDto.setAcctType(rs.getString("account_type"));
-//				bankAcctDto.setBankName(rs.getString("bank_name"));
-//				bankAcctDto.setCurrBalance(rs.getDouble("current_balance"));
-//				bankAcctDto.setIfscCode(rs.getString("ifsc_code"));
-//				bankAcctDto.setUserId(rs.getInt("user_id"));
-//				
-//				resBankAcctList.add(bankAcctDto);
-//			}
-//		} catch (Exception ex) {
-//			ex.printStackTrace();
-//		}
-//
-//		return resBankAcctList;
-//	}
-
-	
-
-
-
-
-	
-	
 	
 }
