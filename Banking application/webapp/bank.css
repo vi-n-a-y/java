@@ -166,5 +166,14 @@
 			       
          margin:50px 25px;
         }
-
+        
+        
+        /* //addMoney */
+		 .add_mny{
+            border:2px solid black;
+        }
+        .markRed{
+            color:red;
+            text-align: center;
+        }
  
