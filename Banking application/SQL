@@ -60,3 +60,18 @@ set sql_safe_updates=0;
 update bank_info
 set curr_bal=curr_bal+100
 where user_id=101;
+
+create table transaction(trxn_id int auto_increment primary key,
+trxn_date timestamp default current_timestamp ,
+from_acc_no varchar(30) not null , 
+to_acc_no varchar(30) not null, 
+descr varchar(255) ,
+amount_send double not null,
+balance double not null,
+user_id int not null,
+foreign key(user_id) references user_info(user_id),
+foreign key(from_acc_no) references bank_info(acc_nmbr),
+foreign key(to_acc_no) references bank_info(acc_nmbr));
+
+
+
