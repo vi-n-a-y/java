@@ -69,7 +69,7 @@ public class Home_Page extends HttpServlet {
 				}
 			}
 			else {
-				response.sendRedirect("bank.jsp");
+				response.sendRedirect("addMoney.jsp");
 			
 			}
 				
