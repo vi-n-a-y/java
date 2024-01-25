@@ -11,6 +11,7 @@ import java.sql.SQLException;
 
 import com.vin.bankdto.BankDTO;
 import com.vin.bankdto.AccountDTO;
+import com.vin.bankdto.TransactionDTO;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpSession;
@@ -31,7 +32,42 @@ public class BankDAO {
 		this.contextPath = contextPath;
 	}
 	
+	
+//for login credientials	
+	
+	public BankDTO getUserDetails(String uname) {
 
+		BankDTO resUser = new BankDTO();
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from user_info where user_name='" + uname + "'");
+
+			while (rs.next()) {
+		
+				resUser.setUserId(rs.getInt("user_id"));
+				resUser.setUname(rs.getString("user_name"));
+				resUser.setPassword(rs.getString("user_pass"));
+				resUser.setEmail(rs.getString("user_mail"));
+				resUser.setPhno(rs.getString("user_ph"));
+				resUser.setAddress(rs.getString("user_address"));
+				resUser.setFullName(rs.getString("user_full_name"));
+//				System.out.println(rs.getString(4));
+			}
+			if (resUser.getUserId() == 0) {
+				resUser = null;
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		return resUser;
+	}
+	
+	
+//for registeration
 	public int registerDetails(BankDTO details)throws ClassNotFoundException{
 		String Insert_user_info="INSERT INTO user_info"+
 				"(user_name,user_pass,user_full_name,user_mail,user_ph,user_address)values"+
@@ -66,38 +102,8 @@ public class BankDAO {
 		return result;
 	}
 	
-	public BankDTO getUserDetails(String uname) {
 
-		BankDTO resUser = new BankDTO();
-
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "root");
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from user_info where user_name='" + uname + "'");
-
-			while (rs.next()) {
-		
-				resUser.setUserId(rs.getInt("user_id"));
-				resUser.setUname(rs.getString("user_name"));
-				resUser.setPassword(rs.getString("user_pass"));
-				resUser.setEmail(rs.getString("user_mail"));
-				resUser.setPhno(rs.getString("user_ph"));
-				resUser.setAddress(rs.getString("user_address"));
-				resUser.setFullName(rs.getString("user_full_name"));
-//				System.out.println(rs.getString(4));
-			}
-			if (resUser.getUserId() == 0) {
-				resUser = null;
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-
-		return resUser;
-	}
-	
-	
+//Getting account details from the database	
 	public AccountDTO getAccDetails(int id) {
 
 		AccountDTO accDetails = new AccountDTO();
@@ -127,6 +133,9 @@ public class BankDAO {
 
 		return accDetails;
 	}
+	
+	
+//to set account details to the database	
 	public int setAccDetails(AccountDTO setData)throws ClassNotFoundException{
 		String Insert_data="INSERT INTO bank_info" + 
 				"(acc_nmbr,bank_name,ifsc_code,acc_type,curr_bal,user_id) values"+
@@ -156,6 +165,36 @@ public class BankDAO {
 		}
 		
 		return data;
+	}
+	
+	
+//send money
+//to set details to the database
+	
+	public TransactionDTO setTransactionDetails(int user_id) {
+		TransactionDTO trxns = new TransactionDTO();
+		String send_money_db ="insert into transaction(from_acc_no,to_acc_no,descr,amount_send,balance,user_id)values"+
+		"(?,?,?,?,?,?)";
+		
+		try{
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
+			PreparedStatement ps=con.prepareStatement(send_money_db);
+			ps.setString(1,trxns.getFromAcc());
+			ps.setString(2,trxns.getToAcc());
+			ps.setString(3,trxns.getDescription());
+			ps.setDouble(4,trxns.getAmountSend());
+			ps.setDouble(5,trxns.getBalance());
+			ps.setInt(6,trxns.getUserId());
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return trxns;
 	}
 	
 }
