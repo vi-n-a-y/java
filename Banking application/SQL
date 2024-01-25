@@ -73,5 +73,14 @@ foreign key(user_id) references user_info(user_id),
 foreign key(from_acc_no) references bank_info(acc_nmbr),
 foreign key(to_acc_no) references bank_info(acc_nmbr));
 
+alter table bank_info
+modify acc_nmbr varchar(30) unique;
+desc transaction;
+
+insert into transaction(from_acc_no,to_acc_no,descr,amount_send,balance,
+user_id) values
+("1590","45673","Loan Payment",500.00,5050.58,107),
+("45673","54987","Rent",1000.00,4464.97,132);
+
 
 
