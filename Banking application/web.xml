@@ -69,4 +69,14 @@
     <servlet-name>AccountDetails</servlet-name>
     <url-pattern>/AccDet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Trxns</display-name>
+    <servlet-name>Trxns</servlet-name>
+    <servlet-class>Trxns</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Trxns</servlet-name>
+    <url-pattern>/trxns</url-pattern>
+  </servlet-mapping>
 </web-app>
