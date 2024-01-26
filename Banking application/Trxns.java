@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-//import com.vin.bankdto.BankDTO;
+import com.vin.bankdto.BankDTO;
 import com.vin.bankdto.AccountDTO;
 import com.vin.bankdto.TransactionDTO;
 import com.vin.bankdao.BankDAO;
@@ -44,7 +44,7 @@ public class Trxns extends HttpServlet {
 		
 		RequestDispatcher rd=request.getRequestDispatcher("SendMoney.jsp");
 		HttpSession session=request.getSession();
-//		BankDTO user = (BankDTO) session.getAttribute("user");
+		BankDTO user = (BankDTO) session.getAttribute("user");
 		AccountDTO data=(AccountDTO) session.getAttribute("data");
 		
 		
@@ -54,29 +54,31 @@ public class Trxns extends HttpServlet {
 		String toIfscCode=request.getParameter("rec_ifsc");
 		String description=request.getParameter("description");
 		double TotalAmountSend=Double.parseDouble(request.getParameter("total_amount"));
-		int id=data.getUserId();
+//		String myAcc=data.getAccountNumber();
+		int id=user.getUserId();
+		trn.setBalance(data.getCurrBalance());
 		trn.setFromAcc(data.getAccountNumber());
 		trn.setToAcc(toAccNmbr);
 		trn.setDescription(description);
 		trn.setAmountSend(TotalAmountSend);
-		trn.setBalance(data.getCurrBalance());
+		
 		trn.setUserId(id);
+		System.out.println("trxns: "+data.getAccountNumber());
+		System.out.println("trxns: "+data.getCurrBalance());
+		
+		trnDao.setTransactionDetails(trn);
 		
 		
-		trnDao.setTransactionDetails(id);
-		if(id>0) {
-			response.sendRedirect("Statement.jsp");
+		
+		if(trn!=null) {
+			
+			session.setAttribute("trn",trn);
+//			rd.include(request, response);
 			
 		}
 		else {
-			response.sendRedirect("home.jsp");
+			response.sendRedirect("bank.jsp");
 		}
-	
-		
-	
-	
-	
-	
 	}
 
 }
