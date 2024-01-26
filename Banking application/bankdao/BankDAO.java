@@ -202,4 +202,25 @@ public class BankDAO {
 		return result;
 	}
 	
+	public double updateCurrBal(double amt,int id) {
+		String update_curr_bal="update bank_info"+"set curr_bal="+"curr_bal"+amt + "where user_id=" +id;
+//		update bank_info
+//		set curr_bal=curr_bal+100
+//		where user_id=101;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
+			PreparedStatement ps=con.prepareStatement(update_curr_bal);
+			ps.executeUpdate();
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		
+		
+		return amt;
+	}
+	
+	
 }
