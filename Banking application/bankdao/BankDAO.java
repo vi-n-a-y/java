@@ -115,7 +115,7 @@ public class BankDAO {
 			ResultSet rs = stmt.executeQuery("select * from bank_info where user_id=" + id );
 
 			while (rs.next()) {
-				 System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3));
+				 System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)+" ");
 //				accDetails.setId(rs.getInt("id"));
 				accDetails.setAccountNumber(rs.getString("acc_nmbr"));
 				accDetails.setBankName(rs.getString("bank_name"));
@@ -171,10 +171,11 @@ public class BankDAO {
 //send money
 //to set details to the database
 	
-	public TransactionDTO setTransactionDetails(int user_id) {
-		TransactionDTO trxns = new TransactionDTO();
+	public int setTransactionDetails(TransactionDTO trxns ) {
+//		TransactionDTO trxns = new TransactionDTO();
 		String send_money_db ="insert into transaction(from_acc_no,to_acc_no,descr,amount_send,balance,user_id)values"+
 		"(?,?,?,?,?,?)";
+		int result=0;
 		
 		try{
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -186,6 +187,10 @@ public class BankDAO {
 			ps.setDouble(4,trxns.getAmountSend());
 			ps.setDouble(5,trxns.getBalance());
 			ps.setInt(6,trxns.getUserId());
+//			System.out.println("the output is : "+user_id);
+			System.out.println("the output is : "+trxns.getFromAcc());
+			System.out.println("the output is : "+trxns.getBalance());
+			  result=ps.executeUpdate();
 			
 			
 		}catch(Exception e) {
@@ -193,8 +198,8 @@ public class BankDAO {
 		}
 		
 		
-		
-		return trxns;
+		System.out.println(result);
+		return result;
 	}
 	
 }
