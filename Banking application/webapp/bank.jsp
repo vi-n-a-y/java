@@ -18,8 +18,8 @@
 			
 			<form id="form1" action="http://localhost:8080/Banking_application/home" method="post">
         <table>         
-            <tr ><td><label >User Name:  </label></td><td><input type="text" name="u_name" size=23 class="info_inp"  placeholder="Enter your Name..."></td></tr>
-            <tr ><td><label >Password : </label></td><td ><input type="password" size=23 name="u_pass" class="info_inp"  placeholder="Enter password Here..."></td></tr>		 
+            <tr ><td><label >User Name:  </label></td><td><input type="text" name="u_name" size=23 class="info_inp"  placeholder="Enter your Name..." required></td></tr>
+            <tr ><td><label >Password : </label></td><td ><input type="password" size=23 name="u_pass" class="info_inp"  placeholder="Enter password Here..." required></td></tr>		 
         </table>
         <a href="#" class="forgot">forgot password ?</a>
          <button class="sign_sub">Submit</button></form> 

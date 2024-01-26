@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="com.vin.bankdto.TransactionDTO" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,16 +15,28 @@
        <form action="http://localhost:8080/Banking_application/trxns">
             <table> 
  
-               <tr ><td><label>Receiver Account Number :</label></td><td >  <input type="text" name="rec_acc" class="info_inp"  ></td></tr>
+               <tr ><td><label>Receiver Account Number :</label></td><td >  <input type="text" name="rec_acc" class="info_inp"  required></td></tr>
                <tr ><td><label >Receiver IFSC Code :</label></td><td ><input type="text"  name="rec_ifsc" class="info_inp"  ></td></tr>
-              <tr ><td> <label>Description :</label></td><td ><input type="text" name="description"  class="info_inp"  ></td></tr>
-               <tr ><td><label >Total Amount to transfer :</label></td><td ><input name="total_amount"  name="total_amt" class="info_inp"  ></td></tr>
+              <tr ><td> <label>Description :</label></td><td ><input type="text" name="description"  class="info_inp"  required></td></tr>
+               <tr ><td><label >Total Amount to transfer :</label></td><td ><input name="total_amount"  name="total_amt" class="info_inp"  required></td></tr>
          		
            </table>
-           <button class="sign">send</button>
+           <button class="sign" onclick="checkSend()">send</button>
          </form>
-
     </div>
+    <script>
+    function checkSend(){
+    	 <%TransactionDTO trn=(TransactionDTO) session.getAttribute("trn"); %>
+    	 <% if(trn!=null){ %>
+    	 alert("money sended successfully");
+    	 console.log("if condition");
+    	 
+    	  <%}else{%>
+    	  alert("techinical problem while sending money");
+    	  console.log("else condition");
+    	  <%}%>
+    
+    </script>
 
 </body>
 </html>
