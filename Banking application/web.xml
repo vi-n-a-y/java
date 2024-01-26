@@ -79,4 +79,14 @@
     <servlet-name>Trxns</servlet-name>
     <url-pattern>/trxns</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddMoney</display-name>
+    <servlet-name>AddMoney</servlet-name>
+    <servlet-class>AddMoney</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddMoney</servlet-name>
+    <url-pattern>/add</url-pattern>
+  </servlet-mapping>
 </web-app>
