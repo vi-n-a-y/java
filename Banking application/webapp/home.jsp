@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Banking Application</title>
 <link rel="stylesheet" href="bank.css">
    
  </head>
@@ -17,11 +17,11 @@
 	<% BankDTO user = (BankDTO) session.getAttribute("user"); %>
     <div class="home_main">    
         <div class="bg_black">
-            <b> <a class="logo1" href="#" >Pir@es.Bank</a></b>
-            <a href="#" >MENU</a>
-            <a href="#" >SERVICES</a>
-            <a href="Statement.jsp" >STATEMENT</a>
-            <a href="SendMoney.jsp" >SEND MONEY</a>
+            <b> <a  class="logo1" href="#" >Pir@es.Bank</a></b>
+            <a class="nav" href="#" >MENU</a>
+            <a class="nav"  href="addMoney.jsp" >ADD MONEY</a>
+            <a  class="nav" href="Statement.jsp" >STATEMENT</a>
+            <a class="nav"  href="SendMoney.jsp" >SEND MONEY</a>
             <input type="text" placeholder="search">
             <button class="search">search</button>
             <button class="sign">logout</button>       
@@ -73,11 +73,11 @@
                   <table>
                        
                     <tr ><td><label >Accounts :  </label></td><td><input type="radio" name="acc_info"  class="info_text" checked ></td></tr>                   
-                    <tr ><td><label >Account Number :  </label></td><td><input type="text" name="acc_nmbr"  class="info_text"  ></td></tr>
-                    <tr ><td><label >Bank Name :  </label></td><td><input type="text" name="acc_bank_name"  class="info_text"  ></td></tr>
-                    <tr ><td><label >IFSC Code :  </label></td><td><input type="text" name="acc_ifsc"  class="info_text"  ></td></tr>                
-                   <tr ><td><label >Account Type : </label></td><td ><input type="text"  name="acc_type" class="info_text"  ></td></tr>
-                    <tr ><td><label >Current Balance :  </label></td><td><input type="text" name="acc_bal"  class="info_text" ></td></tr>
+                    <tr ><td><label >Account Number :  </label></td><td><input type="text" name="acc_nmbr"  class="info_text"  required></td></tr>
+                    <tr ><td><label >Bank Name :  </label></td><td><input type="text" name="acc_bank_name"  class="info_text"  required></td></tr>
+                    <tr ><td><label >IFSC Code :  </label></td><td><input type="text" name="acc_ifsc"  class="info_text" required ></td></tr>                
+                   <tr ><td><label >Account Type : </label></td><td ><input type="text"  name="acc_type" class="info_text"  required></td></tr>
+                    <tr ><td><label >Current Balance :  </label></td><td><input type="text" name="acc_bal"  class="info_text" required></td></tr>
                      
                 </table>
                 <button>submit</button>
@@ -90,6 +90,7 @@
     <button class="sign" id="btn" onclick="hide()">Statement Form</button>
     </form> -->
         </div>
+        <%-- <jsp:include page="../common/footer.jsp"></jsp:include> --%>
  
 
 </body>
