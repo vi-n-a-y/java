@@ -15,24 +15,11 @@ import com.vin.bankdto.AccountDTO;
 import com.vin.bankdto.TransactionDTO;
 import com.vin.bankdao.BankDAO;
 @WebServlet("/trxns")
-
-/**
- * Servlet implementation class Trxns
- */
 public class Trxns extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public Trxns() {
         super();
-        // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	doPost(request,response);
 	}
@@ -49,18 +36,32 @@ public class Trxns extends HttpServlet {
 		
 		
 
-//		from_acc_no,to_acc_no,descr,amount_send,balance,user_id
+
 		String toAccNmbr=request.getParameter("rec_acc");
 		String toIfscCode=request.getParameter("rec_ifsc");
 		String description=request.getParameter("description");
-		double TotalAmountSend=Double.parseDouble(request.getParameter("total_amount"));
+		double totalAmountSend=Double.parseDouble(request.getParameter("total_amount"));
 //		String myAcc=data.getAccountNumber();
+		double curr_bal=data.getCurrBalance();
+		if(curr_bal>totalAmountSend) {
+			curr_bal=curr_bal-totalAmountSend;
+			
+			
+		}else {
+			System.out.println("not enough balance");
+			
+		}
+		
+		
+		
+		
+		
 		int id=user.getUserId();
-		trn.setBalance(data.getCurrBalance());
+		trn.setBalance(curr_bal);
 		trn.setFromAcc(data.getAccountNumber());
 		trn.setToAcc(toAccNmbr);
 		trn.setDescription(description);
-		trn.setAmountSend(TotalAmountSend);
+		trn.setAmountSend(totalAmountSend);
 		
 		trn.setUserId(id);
 		System.out.println("trxns: "+data.getAccountNumber());
@@ -71,14 +72,19 @@ public class Trxns extends HttpServlet {
 		
 		
 		if(trn!=null) {
-			
+			trnDao.updateCurrBal(curr_bal,id);
+			trnDao.updateCurrBalToRec(totalAmountSend,toAccNmbr );
 			session.setAttribute("trn",trn);
 //			rd.include(request, response);
 			
-		}
-		else {
+		}else {
+		
 			response.sendRedirect("bank.jsp");
 		}
 	}
+	
+	
+	
+	
 
 }
