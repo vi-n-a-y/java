@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import com.vin.bankdao.BankDAO;
+import com.vin.bankdto.AccountDTO;
 import com.vin.bankdto.BankDTO;
 
 @WebServlet("/add")
@@ -26,15 +27,25 @@ public class AddMoney extends HttpServlet {
 		HttpSession session=request.getSession();	
 		BankDAO addDao = new  BankDAO();
 		BankDTO user = new  BankDTO();
+		AccountDTO data = new AccountDTO();
 		
 		user=(BankDTO) session.getAttribute("user");
+		data=(AccountDTO) session.getAttribute("data");
 		int id=user.getUserId();
-		System.out.println(id);
-		
-		
+		int us_id=data.getId();
+		double bal=data.getCurrBalance();
 		double amount=Double.parseDouble(request.getParameter("add_amt"));
 		
-		addDao.updateCurrBal(amount, id);
+			bal=bal+amount;
+		
+		
+				System.out.println(id);
+				System.out.println("account dto id is :"+us_id);
+		
+		
+		
+		
+		addDao.updateCurrBal(bal, id);
 		System.out.println(addDao);
 		if(addDao!=null) {
 			response.sendRedirect("Statement.jsp");
