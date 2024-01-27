@@ -116,7 +116,7 @@ public class BankDAO {
 
 			while (rs.next()) {
 				 System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)+" ");
-//				accDetails.setId(rs.getInt("id"));
+				accDetails.setId(rs.getInt("id"));
 				accDetails.setAccountNumber(rs.getString("acc_nmbr"));
 				accDetails.setBankName(rs.getString("bank_name"));
 				accDetails.setIfscCode(rs.getString("ifsc_code"));
@@ -203,14 +203,35 @@ public class BankDAO {
 	}
 	
 	public double updateCurrBal(double amt,int id) {
-		String update_curr_bal="update bank_info"+"set curr_bal="+"curr_bal"+amt + "where user_id=" +id;
-//		update bank_info
-//		set curr_bal=curr_bal+100
-//		where user_id=101;
+//		String update_curr_bal="update bank_info set curr_bal=curr_bal+"+amt+" where user_id="+id;
+		String update_curr_bal="update bank_info set curr_bal="+amt+" where user_id="+id;
+//		$sql = "UPDATE users SET Balance=Balance-".$amount." WHERE ID=$userFrom";
+//		String str="update bank_info"+     
+//		"set curr_bal=curr_bal + "+amt+
+//		"where user_id="+id;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
 			PreparedStatement ps=con.prepareStatement(update_curr_bal);
+			ps.executeUpdate();
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		
+		
+		return amt;
+	}
+	
+	
+	public double updateCurrBalToRec(double amt,String to_acc_nmbr) {
+		String update_rec_bal="update bank_info set curr_bal=curr_bal+"+amt+" where acc_nmbr="+to_acc_nmbr;
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","root");
+			PreparedStatement ps=con.prepareStatement(update_rec_bal);
 			ps.executeUpdate();
 			
 		}catch(Exception ex) {
