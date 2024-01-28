@@ -22,9 +22,15 @@
         <tr ><td><label > Current Balance :</label></td><td ><input type="text"  name="curr_balan" value=<%=data.getCurrBalance() %> class="info_inp"  ></td></tr>
         <tr ><td><label>Amount :</label></td><td >  <input type="text" name="add_amt" class="info_inp"  ></td></tr>
        </table>
-       <button class="sign">Deposit</button>
+       <button  onclick="deposit()" class="sign">Deposit</button>
     </form>
     </div>
+    
+    <script>
+function deposit()(){
+    window.location.reload();
+} 
+</script>
 
 </body>
 </html>
