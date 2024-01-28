@@ -21,6 +21,10 @@
         <input type="date" placeholder="select start date">
         <label>End Date :</label>
         <input type="date" placeholder="select end date">
+        
+        
+        
+        
         </div>
         <table border=1>
         <caption ><font >Mini-Statement Form</font></caption>
