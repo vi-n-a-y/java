@@ -195,10 +195,10 @@ public class BankDAO {
 	}
 	
 	//for miniStatement
-	public int setMiniStatement(int id) {
+	public TransactionDTO setMiniStatement(int id) {
 		TransactionDTO accDetails = new TransactionDTO();
 		String miniStatement ="select * from transaction where user_id="+id;
-		int result=0;
+		
 		
 		try{
 			Connection con = JdbcDao.getConnection();
@@ -222,10 +222,7 @@ public class BankDAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		System.out.println(result);
-		return result;
+		return accDetails;
 	}
 	
 	public double updateCurrBal(double amt,int id) {
