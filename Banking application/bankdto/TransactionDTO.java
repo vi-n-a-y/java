@@ -1,12 +1,29 @@
 package com.vin.bankdto;
 
+import java.sql.Date;
+
 public class TransactionDTO {
+	private Date trnDate;
+	private int trnId;
+
 	private String fromAcc;
 	private String toAcc;
 	private String description;
 	private double amountSend;
 	private double balance;
 	private int userId;
+	public Date getTrnDate() {
+		return trnDate;
+	}
+	public void setTrnDate(Date trnDate) {
+		this.trnDate = trnDate;
+	}
+	public int getTrnId() {
+		return trnId;
+	}
+	public void setTrnId(int trnId) {
+		this.trnId = trnId;
+	}
 	
 	public String getFromAcc() {
 		return fromAcc;
