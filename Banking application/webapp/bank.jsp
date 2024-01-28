@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"  errorPage="error.jsp"%>
+<%@ page import="com.vin.bankdto.BankDTO"%>    
+
 <!Doctype html>
 <html lang="en">
 <head>
@@ -49,6 +51,8 @@
          <table><tr><td><button class="regi_btn2" onclick="register()">signin</button></td></tr></table>                         
 	</div>
 </div>
+
+
 </div>
 
 <script>
