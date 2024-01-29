@@ -101,9 +101,9 @@ public class BankDAO {
 	
 
 //Getting account details from the database	
-	public AccountDTO getAccDetails(int id) {
+	public List<AccountDTO> getAccDetails(int id) {
 
-		AccountDTO accDetails = new AccountDTO();
+		List<AccountDTO> accDetList = new ArrayList<AccountDTO>();
 
 		try {
 			Connection con = JdbcDao.getConnection();
@@ -111,6 +111,9 @@ public class BankDAO {
 			ResultSet rs = stmt.executeQuery("select * from bank_info where user_id=" + id );
 
 			while (rs.next()) {
+				AccountDTO accDetails = new AccountDTO();
+
+				System.out.println("account number is "+rs.getString("acc_nmbr"));
 				accDetails.setId(rs.getInt("id"));	
 
 				accDetails.setAccountNumber(rs.getString("acc_nmbr"));
@@ -119,15 +122,14 @@ public class BankDAO {
 				accDetails.setAcctType(rs.getString("acc_type"));
 				accDetails.setCurrBalance(rs.getDouble("curr_bal"));
 				accDetails.setUserId(rs.getInt("user_id"));
+				accDetList.add(accDetails);
 			}
-			if (accDetails.getUserId() == 0) {
-				accDetails = null;
-			}
+			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
-		return accDetails;
+		return accDetList;
 	}
 	
 	
@@ -195,8 +197,8 @@ public class BankDAO {
 	}
 	
 	//for miniStatement
-	public TransactionDTO setMiniStatement(int id) {
-		TransactionDTO accDetails = new TransactionDTO();
+	public List<TransactionDTO> setMiniStatement(int id) {
+		List<TransactionDTO> trnDto = new ArrayList<TransactionDTO>();
 		String miniStatement ="select * from transaction where user_id="+id;
 		
 		
@@ -206,6 +208,7 @@ public class BankDAO {
 			ResultSet rs = stmt.executeQuery(miniStatement);
 			
 			while (rs.next()) {
+				TransactionDTO accDetails = new TransactionDTO();
 				accDetails.setUserId(rs.getInt("user_id"));	
 				accDetails.setTrnDate(rs.getDate("trxn_date"));
 				accDetails.setTrnId(rs.getInt("trxn_id"));
@@ -214,6 +217,7 @@ public class BankDAO {
 				accDetails.setDescription(rs.getString("descr"));
 				accDetails.setBalance(rs.getDouble("balance"));
 				accDetails.setAmountSend(rs.getDouble("amount_send"));
+				trnDto.add(accDetails);
 				
 			}
 			
@@ -222,7 +226,7 @@ public class BankDAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return accDetails;
+		return trnDto;
 	}
 	
 	public double updateCurrBal(double amt,int id) {
