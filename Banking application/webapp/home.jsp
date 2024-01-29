@@ -4,7 +4,7 @@
 <%@ page import="com.vin.bankdto.AccountDTO"%>
 <%@ page import="com.vin.bankdao.BankDAO"%>
 <%@ page import="java.util.List"%>
-
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,28 +41,27 @@
     </div>
    		 <div class="acc_info">
    
-    <% AccountDTO data = (AccountDTO) session.getAttribute("data"); %>
-    
+
+     <%BankDAO detailsDao=new BankDAO(); 
+     List<AccountDTO>  data=detailsDao.getAccDetails(user.getUserId());  
+    session.setAttribute("data", data); %>
+
         <h1 class="acc_head">Account Details</h1>
-<%--         <%if(data==null){ %> --%>
-        <button>Add Account</button>
-<%--         <%} %>
-        <%else { %> --%>
-       <%--  <%while(data){ %> --%>
+
      
-       <% if(data!=null){ %>
+       <% if(data!=null){ %> 
+    
             <table>
-            
+            			<%for(AccountDTO accDto : data ){ %>
+            			
                        
                     <tr ><td><label >Accounts :  </label></td><td><input type="radio" name="acc_info"  class="info_text" checked ></td></tr>
-                    
-                    
-                    <tr ><td><label >Account Number :  </label></td><td><input type="text" name="acc_nmbr"  class="info_text" value="<%= data.getAccountNumber() %>" ></td></tr>
-                    <tr ><td><label >Bank Name :  </label></td><td><input type="text" name="acc_bank_name"  class="info_text" value="<%= data.getBankName() %>" ></td></tr>
-                    <tr ><td><label >IFSC Code :  </label></td><td><input type="text" name="acc_ifsc"  class="info_text" value="<%= data.getIfscCode() %>" ></td></tr>                
-                   <tr ><td><label >Account Type : </label></td><td ><input type="text"  name="acc_type" class="info_text" value="<%= data.getAcctType()%>" ></td></tr>
-                    <tr ><td><label >Current Balance :  </label></td><td><input type="text" name="acc_bal"  class="info_text"value="<%= data.getCurrBalance()%>" ></td></tr>
-                     
+                    <tr ><td><label >Account Number :  </label></td><td><input type="text" name="acc_nmbr"  class="info_text" value="<%= accDto.getAccountNumber() %>" ></td></tr>
+                    <tr ><td><label >Bank Name :  </label></td><td><input type="text" name="acc_bank_name"  class="info_text" value="<%= accDto.getBankName() %>" ></td></tr>
+                    <tr ><td><label >IFSC Code :  </label></td><td><input type="text" name="acc_ifsc"  class="info_text" value="<%= accDto.getIfscCode() %>" ></td></tr>                
+                   <tr ><td><label >Account Type : </label></td><td ><input type="text"  name="acc_type" class="info_text" value="<%= accDto.getAcctType()%>" ></td></tr>
+                    <tr ><td><label >Current Balance :  </label></td><td><input type="text" name="acc_bal"  class="info_text"value="<%= accDto.getCurrBalance()%>" ></td></tr>
+                     <%} %> 
                 </table>
                
                 
@@ -81,8 +80,8 @@
                      
                 </table>
                 <button>submit</button>
-                </form>
-          <%} %> 
+                </form> 
+          <%} %>  
            
     </div> 
     
@@ -91,7 +90,7 @@
     </form> -->
         </div>
         <%-- <jsp:include page="../common/footer.jsp"></jsp:include> --%>
- 
+ <%--  <%session.setAttribute("data", data); %> --%>
 
 </body>
 </html>
