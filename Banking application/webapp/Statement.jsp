@@ -3,18 +3,19 @@
     <%@ page import="com.vin.bankdto.BankDTO"%>
 <%@ page import="com.vin.bankdto.AccountDTO"%>
 <%@ page import="com.vin.bankdto.TransactionDTO"%>
-
+<%@ page import="java.util.List"%>
 <%@ page import="com.vin.bankdao.BankDAO"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="bank.css">
 </head>
 <body>
 
 
-<div class="para" id="para">
+<div class="stmPage" id="st">
         <button style="float:right; color:red;">logout</button>
         <div class=pers_info>
         <h1 class="acc_head">statement Form</h1>
@@ -29,24 +30,25 @@
         
         <% BankDTO user = (BankDTO) session.getAttribute("user"); %>
         <% BankDAO trxn = new BankDAO(); %>
-        <% TransactionDTO mini=(TransactionDTO)trxn.setMiniStatement(user.getUserId()); %>
+        <% List<TransactionDTO> stm=trxn.setMiniStatement(user.getUserId()); %>
         
         
         
         
         
         </div>
-        <%if(mini!=null){ %>
+        <%if(stm!=null){ %>
         <table border=1>
         
         <caption ><font >Mini-Statement Form</font></caption>
-        <tr><th>Trxn_id</th><th>Date</th><th>From Account No:</th><th>To Account No</th><th>Description</th><th>Amount</th><th>Current Balance</th>
+        <tr><th>Trxn_id</th><th>Date</th><th>From Account No:</th><th>To Account No</th><th>Description</th><th>Amount Send</th><th>Current Balance</th>
+        <%for(TransactionDTO mini : stm ){ %>
         <tr><td><%=mini.getTrnId() %></td><td><%=mini.getTrnDate() %></td><td><%=mini.getFromAcc()%></td><td><%=mini.getToAcc() %></td><td><%=mini.getDescription() %></td><td><%=mini.getAmountSend() %></td><td><%=mini.getBalance() %></td></tr>
-       
+       <%} %>
         
         </table>
          <%}else{ 
-        	throw new RuntimeException("Error condition!!!");
+        	throw new RuntimeException("No Transaction found!");
         	
         }%>
         
