@@ -91,3 +91,7 @@ where user_id=105;
 desc bank_info;
 update bank_info set curr_bal=curr_bal+500 where acc_nmbr=56847;
 update bank_info set curr_bal=500 where user_id=101;
+
+INSERT INTO bank_info(acc_nmbr,bank_name,ifsc_code,acc_type,curr_bal,user_id) 
+values("45876","kotak Bank","KOT00GNP","SAVINGS",45876.01,132);
+
