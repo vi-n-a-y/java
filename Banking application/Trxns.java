@@ -29,7 +29,7 @@ public class Trxns extends HttpServlet {
 		TransactionDTO trn=new  TransactionDTO();
 		BankDAO trnDao=new BankDAO();
 		
-		RequestDispatcher rd=request.getRequestDispatcher("SendMoney.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("/home.jsp");
 		HttpSession session=request.getSession();
 		BankDTO user = (BankDTO) session.getAttribute("user");
 		AccountDTO data=(AccountDTO) session.getAttribute("data");
@@ -75,7 +75,7 @@ public class Trxns extends HttpServlet {
 			trnDao.updateCurrBal(curr_bal,id);
 			trnDao.updateCurrBalToRec(totalAmountSend,toAccNmbr );
 			session.setAttribute("trn",trn);
-//			rd.include(request, response);
+			rd.forward(request, response);
 			
 		}else {
 		
