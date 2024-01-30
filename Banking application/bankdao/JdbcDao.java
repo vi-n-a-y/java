@@ -25,5 +25,18 @@ public class JdbcDao {
 		return connection;
 	}
 	
+	   public static void disconnect(Connection con) {
+	        try {
+	            if (con != null) {
+	                con.close();
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace(); //  handle the exception 
+	        }
+	        return;
+	    }
+
+
+	
 
 }
