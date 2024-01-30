@@ -56,6 +56,7 @@ public class BankDAO {
 				resUser.setFullName(rs.getString("user_full_name"));
 //				System.out.println(rs.getString(4));
 			}
+			JdbcDao.disconnect(con);
 			if (resUser.getUserId() == 0) {
 				resUser = null;
 			}
@@ -79,6 +80,7 @@ public class BankDAO {
 		try {
 			Connection con = JdbcDao.getConnection();
 			PreparedStatement ps=con.prepareStatement(Insert_user_info);
+			JdbcDao.disconnect(con);
 			
 //			ps.setInt(1,1);
 			ps.setString(1,details.getUname());
@@ -90,6 +92,7 @@ public class BankDAO {
 			
 			System.out.println("the output is :"+ps);
 			result=ps.executeUpdate();
+			JdbcDao.disconnect(con);
 	
 		}catch(Exception ex) {
 			ex.printStackTrace();
@@ -124,6 +127,7 @@ public class BankDAO {
 				accDetails.setUserId(rs.getInt("user_id"));
 				accDetList.add(accDetails);
 			}
+			JdbcDao.disconnect(con);
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -154,6 +158,7 @@ public class BankDAO {
 			
 			System.out.println("the output is :"+ps);
 			data=ps.executeUpdate();
+			JdbcDao.disconnect(con);
 	
 		}catch(Exception ex) {
 			ex.printStackTrace();
@@ -185,6 +190,7 @@ public class BankDAO {
 			System.out.println("the output is : "+trxns.getFromAcc());
 			System.out.println("the output is : "+trxns.getBalance());
 			  result=ps.executeUpdate();
+			  JdbcDao.disconnect(con);
 			
 			
 		}catch(Exception e) {
@@ -220,6 +226,7 @@ public class BankDAO {
 				trnDto.add(accDetails);
 				
 			}
+			JdbcDao.disconnect(con);
 			
 			
 			
@@ -234,7 +241,8 @@ public class BankDAO {
 		try {
 			Connection con = JdbcDao.getConnection();
 			PreparedStatement ps=con.prepareStatement(update_curr_bal);
-			ps.executeUpdate();			
+			ps.executeUpdate();
+			JdbcDao.disconnect(con);
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}		
@@ -248,6 +256,8 @@ public class BankDAO {
 			Connection con = JdbcDao.getConnection();
 			PreparedStatement ps=con.prepareStatement(update_rec_bal);
 			ps.executeUpdate();
+			JdbcDao.disconnect(con);
+			
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
@@ -255,8 +265,12 @@ public class BankDAO {
 		
 		
 		
+		
 		return amt;
 	}
+	
+	
+	
 	
 	
 }
