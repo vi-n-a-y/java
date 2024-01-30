@@ -1,5 +1,6 @@
 
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -35,20 +36,15 @@ public class AddMoney extends HttpServlet {
 		int us_id=data.getId();
 		double bal=data.getCurrBalance();
 		double amount=Double.parseDouble(request.getParameter("add_amt"));
-		
 			bal=bal+amount;
-		
-		
-				System.out.println(id);
+			System.out.println(id);
 				System.out.println("account dto id is :"+us_id);
-		
-		
-		
-		
+
 		addDao.updateCurrBal(bal, id);
 		System.out.println(addDao);
 		if(addDao!=null) {
-			response.sendRedirect("Statement.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/home.jsp");
+			rd.forward(request, response);
 		}
 		else {
 			response.sendRedirect("bank.jsp");
