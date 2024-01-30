@@ -15,6 +15,7 @@
 	<%-- <%List<Object[]> data=(List<Object[]>) session.getAttribute("data"); %> --%>
 	 <%AccountDTO data=(AccountDTO)session.getAttribute("data"); %>
 	<%-- <%List <AccountDTO> data=(AccountDTO)session.getAttribute("data"); %> --%>
+	<%-- <%List<AccountDTO> data=(ArrayList<AccountDTO>)session.getAttribute("data"); %> --%>
 
 
 <div class="pers_info">
