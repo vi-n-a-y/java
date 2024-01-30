@@ -67,11 +67,11 @@ public class Trxns extends HttpServlet {
 		System.out.println("trxns: "+data.getAccountNumber());
 		System.out.println("trxns: "+data.getCurrBalance());
 		
-		trnDao.setTransactionDetails(trn);
 		
 		
 		
-		if(trn!=null) {
+		
+		if(trnDao.setTransactionDetails(trn)!=0) {
 			trnDao.updateCurrBal(curr_bal,id);
 			trnDao.updateCurrBalToRec(totalAmountSend,toAccNmbr );
 			session.setAttribute("trn",trn);
@@ -79,7 +79,8 @@ public class Trxns extends HttpServlet {
 			
 		}else {
 		
-			response.sendRedirect("bank.jsp");
+//			response.sendRedirect("home.jsp");
+			throw new RuntimeException("no accound found");
 		}
 	}
 	
