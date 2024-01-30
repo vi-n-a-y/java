@@ -43,8 +43,8 @@
    
 
      <%BankDAO detailsDao=new BankDAO(); 
-     List<AccountDTO>  data=detailsDao.getAccDetails(user.getUserId());  
-    session.setAttribute("data", data); %>
+     List<AccountDTO>  data=detailsDao.getAccDetails(user.getUserId()); %> 
+   
 
         <h1 class="acc_head">Account Details</h1>
 
@@ -61,6 +61,7 @@
                     <tr ><td><label >IFSC Code :  </label></td><td><input type="text" name="acc_ifsc"  class="info_text" value="<%= accDto.getIfscCode() %>" ></td></tr>                
                    <tr ><td><label >Account Type : </label></td><td ><input type="text"  name="acc_type" class="info_text" value="<%= accDto.getAcctType()%>" ></td></tr>
                     <tr ><td><label >Current Balance :  </label></td><td><input type="text" name="acc_bal"  class="info_text"value="<%= accDto.getCurrBalance()%>" ></td></tr>
+                     <%session.setAttribute("data", accDto); %>
                      <%} %> 
                 </table>
                
