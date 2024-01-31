@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ page import="com.vin.bankdto.TransactionDTO" %>
+    <%@ page import="com.vin.bankdto.AccountDTO"%>
     
 <!DOCTYPE html>
 <html>
@@ -10,6 +11,10 @@
 <link rel="stylesheet" href="bank.css">
 </head>
 <body>
+
+		<%AccountDTO data=(AccountDTO)session.getAttribute("data"); %>
+		<%if(data!=null){ %>
+
 <div class="pers_info">
 <h1 class="acc_head">Send Money</h1>
        <form action="http://localhost:8080/Banking_application/trxns">
@@ -24,19 +29,26 @@
            <button class="sign" onclick="checkSend()">send</button>
          </form>
     </div>
-    <script>
+    
+    
+        <%}else{ %>
+    <h3>Add your Account to Add Money</h3>
+    <form action="home.jsp"><button class="sign">Home</button></form>
+<%} %>
+   <%--   <script>
     function checkSend(){
-    	 <%TransactionDTO trn=(TransactionDTO) session.getAttribute("trn"); %>
-    	 <% if(trn!=null){ %>
+    	 
+    	 var trn = <%=application.getAttribute("trn")>
+    	  if(trn!=null){ 
     	 alert("money sended successfully");
     	 console.log("if condition");
     	 
-    	  <%}else{%>
+    	  }else{
     	  alert("techinical problem while sending money");
     	  console.log("else condition");
-    	  <%}%>
+    	  }
     
-    </script>
+    </script> --%> 
 
 </body>
 </html>
