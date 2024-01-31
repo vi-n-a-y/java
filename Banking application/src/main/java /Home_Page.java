@@ -39,12 +39,8 @@ public class Home_Page extends HttpServlet {
 					session.setAttribute("user", user);
 					int id=user.getUserId();	
 					 System.out.println("sysout in Home_page java "+id);
-//					 List<AccountDTO>  data=detailsDao.getAccDetails(id);
-//							session.setAttribute("data", data);
 							RequestDispatcher rd = request.getRequestDispatcher("/home.jsp");
-							rd.forward(request, response);
-							
-							
+							rd.forward(request, response);				
 				} 
 				else {
 					throw new RuntimeException("No Account found,Enter correct Crenditials to Login!");
