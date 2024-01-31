@@ -13,8 +13,13 @@
 <link rel="stylesheet" href="bank.css">
 </head>
 <body>
-
-
+			 <%AccountDTO data=(AccountDTO)session.getAttribute("data"); %>
+			 
+        
+ 	<%if(data!=null){ %>
+ 	    <% BankDAO trxn = new BankDAO(); %>
+        <% List<TransactionDTO> stm=trxn.setMiniStatement(data.getAccountNumber()); %>
+<%if(!stm.isEmpty()){ %>
 <div class="stmPage" id="st">
         <button style="float:right; color:red;">logout</button>
         <div class=pers_info>
@@ -27,17 +32,9 @@
         <input type="date" placeholder="select start date">
         <label>End Date :</label>
         <input type="date" placeholder="select end date">
-        
-        <% BankDTO user = (BankDTO) session.getAttribute("user"); %>
-        <% BankDAO trxn = new BankDAO(); %>
-        <% List<TransactionDTO> stm=trxn.setMiniStatement(user.getUserId()); %>
-        
-        
-        
-        
-        
+  
         </div>
-        <%if(stm!=null){ %>
+        
         <table border=1>
         
         <caption ><font >Mini-Statement Form</font></caption>
@@ -47,10 +44,16 @@
        <%} %>
         
         </table>
-         <%}else{ 
-        	throw new RuntimeException("No Transaction found!");
+         <%}else{%>
+        	<h1 class="acc_head">No transaction found from your Account</h1>
+        	<form action="home.jsp"><button class="sign">Home</button></form>
         	
-        }%>
+     <%}%>
+      <%}else{%>
+        	<h1 class="acc_head">Please add your Account to get Statement</h1>
+        	<form action="home.jsp"><button class="sign">Home</button></form>
+        	
+     <%}%>
         
         </div>
         
