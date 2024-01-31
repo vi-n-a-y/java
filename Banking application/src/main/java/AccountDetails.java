@@ -31,7 +31,7 @@ public class AccountDetails extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		RequestDispatcher rd = request.getRequestDispatcher("/home");
+		RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
 		String accNmbr=request.getParameter("acc_nmbr");
 		String accBankName =request.getParameter("acc_bank_name");
 		String accIfsc=request.getParameter("acc_ifsc");
@@ -48,10 +48,10 @@ public class AccountDetails extends HttpServlet {
 		AccountDto.setUserId(id);
 		
 		try {if(id>0) {
-			AccountDao.setAccDetails(AccountDto);
-			if(AccountDto!=null) {
+			if(AccountDao.setAccDetails(AccountDto)!=0) {
 				rd.forward(request, response);
 			}
+			
 		}
 		else {
 			response.sendRedirect("bank.jsp");
