@@ -19,7 +19,7 @@ import com.vin.bankdto.BankDTO;
 public class AccountDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	  BankDAO AccountDao=new BankDAO();
-//	  BankDTO BankDto =new BankDTO();
+
 	  AccountDTO AccountDto = new AccountDTO();
 
     public AccountDetails() {
@@ -60,10 +60,7 @@ public class AccountDetails extends HttpServlet {
 			} catch (ClassNotFoundException e) {
 
 				e.printStackTrace();
-			}
-		
-		
-		
+			}	
 	}
 
 }
