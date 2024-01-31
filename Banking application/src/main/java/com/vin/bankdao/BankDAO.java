@@ -80,7 +80,7 @@ public class BankDAO {
 		try {
 			Connection con = JdbcDao.getConnection();
 			PreparedStatement ps=con.prepareStatement(Insert_user_info);
-			JdbcDao.disconnect(con);
+			
 			
 //			ps.setInt(1,1);
 			ps.setString(1,details.getUname());
@@ -103,38 +103,7 @@ public class BankDAO {
 	}
 	
 
-//Getting account details from the database	
-	public List<AccountDTO> getAccDetails(int id) {
 
-		List<AccountDTO> accDetList = new ArrayList<AccountDTO>();
-
-		try {
-			Connection con = JdbcDao.getConnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from bank_info where user_id=" + id );
-
-			while (rs.next()) {
-				AccountDTO accDetails = new AccountDTO();
-
-				System.out.println("account number is "+rs.getString("acc_nmbr"));
-				accDetails.setId(rs.getInt("id"));	
-
-				accDetails.setAccountNumber(rs.getString("acc_nmbr"));
-				accDetails.setBankName(rs.getString("bank_name"));
-				accDetails.setIfscCode(rs.getString("ifsc_code"));
-				accDetails.setAcctType(rs.getString("acc_type"));
-				accDetails.setCurrBalance(rs.getDouble("curr_bal"));
-				accDetails.setUserId(rs.getInt("user_id"));
-				accDetList.add(accDetails);
-			}
-			JdbcDao.disconnect(con);
-			
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-
-		return accDetList;
-	}
 	
 	
 //to set account details to the database	
@@ -202,10 +171,48 @@ public class BankDAO {
 		return result;
 	}
 	
+	//Getting account details from the database	
+		public   List<AccountDTO> getAccDetails(int id) {
+
+			List<AccountDTO> accDetList = new ArrayList<AccountDTO>();
+			
+				String diff_acc_det="select * from bank_info where user_id=" + id;
+			try {
+				Connection con = JdbcDao.getConnection();
+				Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(diff_acc_det);
+				
+				 
+				while (rs.next()) {
+					
+					AccountDTO accDetails = new AccountDTO();
+					System.out.println("account number is "+rs.getString("acc_nmbr"));
+					accDetails.setId(rs.getInt("id"));	
+
+					accDetails.setAccountNumber(rs.getString("acc_nmbr"));
+					accDetails.setBankName(rs.getString("bank_name"));
+					accDetails.setIfscCode(rs.getString("ifsc_code"));
+					accDetails.setAcctType(rs.getString("acc_type"));
+					accDetails.setCurrBalance(rs.getDouble("curr_bal"));
+					accDetails.setUserId(rs.getInt("user_id"));
+					accDetList.add(accDetails);
+				}
+				JdbcDao.disconnect(con);
+//				if (accDetails.getId()==0) {
+//					accDetList = null;
+//				}
+				
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+
+			return accDetList;
+		}
+	
 	//for miniStatement
-	public List<TransactionDTO> setMiniStatement(int id) {
+	public List<TransactionDTO> setMiniStatement(String acc) {
 		List<TransactionDTO> trnDto = new ArrayList<TransactionDTO>();
-		String miniStatement ="select * from transaction where user_id="+id;
+		String miniStatement ="select * from transaction where from_acc_no="+acc;
 		
 		
 		try{
