@@ -17,24 +17,28 @@
 	<%-- <%List <AccountDTO> data=(AccountDTO)session.getAttribute("data"); %> --%>
 	<%-- <%List<AccountDTO> data=(ArrayList<AccountDTO>)session.getAttribute("data"); %> --%>
 
-
+<%if(data!=null){ %>
 <div class="pers_info">
-        <h1 class="markRed">SEND MONEY</h1>
+        <h1 class="markRed">ADD MONEY</h1>
         <form action="add"> 
-        <table>
-        
+
+	<table>        
         <tr ><td><label >Account Number :</label></td><td><input type="text"  name="add_acc_nmbr" value=<%=data.getAccountNumber() %> class="info_inp"  ></td></tr>
         <tr ><td><label > IFSC Code :</label></td><td ><input type="text"  name="add_ifscc_cd" value=<%=data.getIfscCode() %> class="info_inp"  ></td></tr>
         <tr ><td><label > Current Balance :</label></td><td ><input type="text"  name="curr_balan" value=<%=data.getCurrBalance() %> class="info_inp"  ></td></tr>
-        <tr ><td><label>Amount :</label></td><td >  <input type="text" name="add_amt" class="info_inp"  ></td></tr>
-   
-       </table>
-       <button  onclick="deposit()" class="sign">Deposit</button>
+        <tr ><td><label>Amount :</label></td><td >  <input type="text" name="add_amt" class="info_inp"  ></td></tr>  		 
+    </table>
+    <button  onclick="deposit()" class="sign">Deposit</button>
     </form>
+    <%}else{ %>
+    <h3>Add your Account to Add Money</h3>
+    <form action="home.jsp"><button class="sign">Home</button></form>
+<%} %>
+    
     </div>
     
     <script>
-function deposit()(){
+function deposit(){
     window.location.reload();
 } 
 </script>
