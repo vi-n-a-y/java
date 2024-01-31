@@ -49,13 +49,7 @@ public class AddMoney extends HttpServlet {
 		else {
 			response.sendRedirect("bank.jsp");
 		}
-		
-		
-		
-		
-		
-		
-		
+	
 	}
 
 }
