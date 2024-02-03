@@ -12,6 +12,9 @@
 </head>
 <body>
 
+<a href="home.jsp"><button class="home_btn" >Home</button></a>
+ <a  href="logout.jsp" ><button class="home_btn" >logout</button></a>
+
 	<%-- <%List<Object[]> data=(List<Object[]>) session.getAttribute("data"); %> --%>
 	 <%AccountDTO data=(AccountDTO)session.getAttribute("data"); %>
 	<%-- <%List <AccountDTO> data=(AccountDTO)session.getAttribute("data"); %> --%>
