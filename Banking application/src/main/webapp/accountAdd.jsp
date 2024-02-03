@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="bank.css">
 </head>
 <body>
+<a href="home.jsp"><button class="home_btn" >Home</button></a>
+ <a  href="logout.jsp" ><button class="home_btn" >logout</button></a>
 <div class="pers_info">
         <h1 class="markRed">Add Account</h1>
 <form action="AccDet">
