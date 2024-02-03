@@ -13,6 +13,9 @@
 <link rel="stylesheet" href="bank.css">
 </head>
 <body>
+
+<a href="home.jsp"><button class="home_btn" >Home</button></a>
+ <a  href="logout.jsp" ><button class="home_btn" >logout</button></a>
 			 <%AccountDTO data=(AccountDTO)session.getAttribute("data"); %>
 			 
         
@@ -32,7 +35,13 @@
         <input type="date" placeholder="select start date">
         <label>End Date :</label>
         <input type="date" placeholder="select end date">
-  
+        
+       
+        
+        
+        
+        
+        
         </div>
         
         <table border=1>
