@@ -24,7 +24,6 @@
         <% List<TransactionDTO> stm=trxn.setMiniStatement(data.getAccountNumber()); %>
 <%if(!stm.isEmpty()){ %>
 <div class="stmPage" id="st">
-        <button style="float:right; color:red;">logout</button>
         <div class=pers_info>
         <h1 class="acc_head">statement Form</h1>
         
