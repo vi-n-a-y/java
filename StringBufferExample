@@ -1,0 +1,36 @@
+
+
+
+
+
+public class StringBufferExample {
+    public static void main(String[] args) {
+        // Creating a StringBuffer object
+        StringBuffer stringBuffer = new StringBuffer("Tech");
+
+        // Appending a string to the StringBuffer
+        stringBuffer.append(" Mahindra");
+        System.out.println("After appending: " + stringBuffer); // Output: Tech Mahindra
+
+        // Inserting a string at a specific position
+        stringBuffer.insert(13, " SMART Academy ");
+        System.out.println("After inserting: " + stringBuffer); // Output: Tech Mahindra SMART Academy 
+
+        // Deleting characters from the StringBuffer
+        stringBuffer.delete(4, 13);
+        System.out.println("After deleting: " + stringBuffer); // Output: Tech SMART Academy 
+
+        // Reversing the StringBuffer
+        stringBuffer.reverse();
+        System.out.println("After reversing: " + stringBuffer); // Output: ymedacA TRAMS hceT
+
+        // Setting the length of the StringBuffer
+        stringBuffer.setLength(5);
+        System.out.println("After setting length: " + stringBuffer); // Output:  ymed
+
+        // Appending an integer to the StringBuffer
+        int num = 123;
+        stringBuffer.append(num);
+        System.out.println("After appending an integer: " + stringBuffer); // Output: ymed123
+    }
+}
