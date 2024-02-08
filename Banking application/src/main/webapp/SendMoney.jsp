@@ -18,7 +18,7 @@
 
 <div class="pers_info">
 <h1 class="acc_head">Send Money</h1>
-       <form action="http://localhost:8080/Banking_application/trxns">
+       <form action="trxns">
             <table> 
  
                <tr ><td><label>Receiver Account Number :</label></td><td >  <input type="text" name="rec_acc" class="info_inp"  required></td></tr>
