@@ -9,14 +9,25 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet" href="bank.css">
+   <%
+  response.setHeader("Cache-Control","no-cache");
+  response.setHeader("Cache-Control","no-store");
+  response.setHeader("Pragma","no-cache");
+  response.setDateHeader ("Expires", 0);
+
+  if(session.getAttribute("user")==null)
+      response.sendRedirect("bank.jsp");
+
+  %> 
 </head>
 <body>
-<a href="home.jsp"><button class="home_btn" >Home</button></a>
- <a  href="logout.jsp" ><button class="home_btn" >logout</button></a>
+
 		<%AccountDTO data=(AccountDTO)session.getAttribute("data"); %>
 		<%if(data!=null){ %>
 
 <div class="pers_info">
+	<a href="home.jsp"><button class="home_btn" >Home</button></a>
+ <a  href="logout.jsp" ><button class="home_btn" >logout</button></a>
 <h1 class="acc_head">Send Money</h1>
        <form action="trxns">
             <table> 
