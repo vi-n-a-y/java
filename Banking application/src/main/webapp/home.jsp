@@ -11,7 +11,17 @@
 <meta charset="ISO-8859-1">
 <title>Banking Application</title>
 <link rel="stylesheet" href="bank.css">
-   
+  <%
+  response.setHeader("Cache-Control","no-cache"); 	//to prevent back button after logOut it remove all cache data in application
+  response.setHeader("Cache-Control","no-store");
+  response.setHeader("Pragma","no-cache");
+  response.setDateHeader ("Expires", 0);
+  response.setDateHeader ("Expires", -1);
+
+   if(session.getAttribute("user")==null)
+      response.sendRedirect("bank.jsp"); 
+
+  %> 
  </head>
 <body>
 	<% BankDTO user = (BankDTO) session.getAttribute("user"); %>
