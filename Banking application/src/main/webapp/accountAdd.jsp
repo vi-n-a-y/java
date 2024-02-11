@@ -6,11 +6,25 @@
 <meta charset="UTF-8">
 <title>Add Account</title>
 <link rel="stylesheet" href="bank.css">
+  <%
+  response.setHeader("Cache-Control","no-cache"); 	//to prevent back button after logOut it remove all cache data in application
+  response.setHeader("Cache-Control","no-store");
+  response.setHeader("Pragma","no-cache");
+  response.setDateHeader ("Expires", 0);
+  response.setDateHeader ("Expires", -1);
+
+   if(session.getAttribute("user")==null)
+      response.sendRedirect("bank.jsp"); 
+
+  %> 
+
 </head>
 <body>
-<a href="home.jsp"><button class="home_btn" >Home</button></a>
- <a  href="logout.jsp" ><button class="home_btn" >logout</button></a>
+
 <div class="pers_info">
+
+ <a  href="logout.jsp" ><button class="home_btn" >logout</button></a>
+ <a href="home.jsp"><button class="home_btn" >Home</button></a>
         <h1 class="markRed">Add Account</h1>
 <form action="AccDet">
                
