@@ -26,8 +26,8 @@
 		<%if(data!=null){ %>
 
 <div class="pers_info">
-	<a href="home.jsp"><button class="home_btn" >Home</button></a>
  <a  href="logout.jsp" ><button class="home_btn" >logout</button></a>
+ <a href="home.jsp"><button class="home_btn" >Home</button></a>
 <h1 class="acc_head">Send Money</h1>
        <form action="trxns">
             <table> 
