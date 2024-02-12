@@ -8,6 +8,7 @@
 </head>
 <body>
 		<div>
+		
 				<form action="http://localhost:8080/Login/home" method="post"> 
 					<table>
 						<tr><td><label>UserName : </label> </td><td><input type="text" name="user_name" ></td></tr>

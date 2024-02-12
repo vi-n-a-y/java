@@ -8,7 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%UserDto user=(UserDto) session.getAttribute("user"); %>
-<h1>Welcome,<%=user.getUsername() %></h1>
+<%-- <%UserDto user=(UserDto) session.getAttribute("user"); %>
+<h1>Welcome,<%=user.getUsername() %></h1> --%>
+<h1>succesfully inserted the data</h1>
+
 </body>
 </html>
