@@ -2,6 +2,7 @@ package com.vin.collections;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 public class CollectionDemo {
 	public static void main(String args[]) {
@@ -13,6 +14,7 @@ public class CollectionDemo {
 		System.out.println(fruits.contains("grapes"));
 		fruits.remove("mango");
 		fruits.remove("grapes");
+		
 		System.out.println(fruits);
 		fruits.forEach((a)->{
 			System.out.println(a);
