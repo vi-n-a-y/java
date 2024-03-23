@@ -11,6 +11,7 @@ public class HashSetDemo {
 		firstEven.add(10);
 		firstEven.add(4);
 		firstEven.add(6);
+		firstEven.add(10);
 
 		System.out.println(firstEven);
 
@@ -23,9 +24,16 @@ public class HashSetDemo {
 		nextEven.add(14);
 
 		nextEven.add(20);
+
 		System.out.println(nextEven);
 		tenEven.addAll(nextEven);
+
 		System.out.println(tenEven);
+
+		tenEven.removeAll(firstEven);
+//		tenEven.clear();
+		System.out.println(tenEven);
+
 	}
 
 }
