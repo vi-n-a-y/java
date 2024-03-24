@@ -8,28 +8,33 @@ import java.util.Set;
 public class HashMapDemo {
 
 	public static void main(String[] args) {
-		Map<Integer,String> students=new HashMap<>();
-		students.put(101, "vinay");
-		students.put(102, "bala");
-		students.put(103, "balu");
-		students.put(104, "venu");
-		students.put(105,"tiru");
-		
-		System.out.println(students);
-		Set<Integer> keys=students.keySet();
+		Map<String, Integer> marks = new HashMap<>();
+		marks.put("English", 92);
+		marks.put("maths", 90);
+		marks.put("science", 85);
+		marks.put("social", 95);
+		marks.put("second Language", 82);
+
+		System.out.println(marks);
+		Set<String> keys = marks.keySet();
 		System.out.println(keys);
-		Collection<String> values=students.values();
+		Collection<Integer> values = marks.values();
 		System.out.println(values);
-		students.remove(105);
-		if(students.containsKey(104)) {
+
+		if (marks.containsValue(85)) {
+			System.out.println("value is exist");
+		} else {
+			System.out.println("value is not exist");
+		}
+		if (marks.containsKey("maths")) {
 			System.out.println("key is exists");
-		}else {
+		} else {
 			System.out.println("key not exists");
 		}
-			
-		
-		
 
+		for (String key : marks.keySet()) {
+			System.out.println("key :" + key + ", values : " + marks.get(key));
+		}
 	}
 
 }
