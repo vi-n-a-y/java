@@ -14,6 +14,7 @@ public class HashMapDemo {
 		marks.put("science", 85);
 		marks.put("social", 95);
 		marks.put("second Language", 82);
+		marks.put("sanskrit",70);
 
 		System.out.println(marks);
 		Set<String> keys = marks.keySet();
@@ -21,12 +22,12 @@ public class HashMapDemo {
 		Collection<Integer> values = marks.values();
 		System.out.println(values);
 
-		if (marks.containsValue(85)) {
+		if (marks.containsValue(70)) {
 			System.out.println("value is exist");
 		} else {
 			System.out.println("value is not exist");
 		}
-		if (marks.containsKey("maths")) {
+		if (marks.containsKey("sanskrit")) {
 			System.out.println("key is exists");
 		} else {
 			System.out.println("key not exists");
