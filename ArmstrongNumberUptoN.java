@@ -5,12 +5,7 @@ public class ArmstrongNumberUptoN {
         for (int i = 0; i <= n; i++)
 
         {
-            num = i;
-            while (num > 0) {
-                r = num % 10;
-                sum = sum + (r * r * r);
-                num = num / 10;
-            }
+            //need to fix the code
             if (sum == i) {
                 System.out.print(i + " ");
             }
