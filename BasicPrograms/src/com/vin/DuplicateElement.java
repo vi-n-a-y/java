@@ -5,7 +5,7 @@ import java.util.HashSet;
 public class DuplicateElement {
 
 	public static void main(String[] args) {
-		String arr[]= {"java","C","C plus","python","java","python"};
+		String arr[]= {"java","C","C plus","python","java","python","C","python"};
 		
 		for(int i=0;i<arr.length;i++) {
 			for(int j=i+1;j<arr.length;j++) {
@@ -20,6 +20,8 @@ public class DuplicateElement {
 		set.add("C plus");
 		set.add("python");
 		set.add("java");
+		set.add("python");
+		set.add("C");
 		set.add("python");
 		System.out.println(set);
 		
