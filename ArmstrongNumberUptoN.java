@@ -1,16 +1,28 @@
 public class ArmstrongNumberUptoN {
-    public static void main(String[] args) {
-        int num, r, n = 500, sum = 0;
-        System.out.print("Armstrong numbers from 0 to N: ");
-        for (int i = 0; i <= n; i++)
+	public static void main(String args[]) {
+		int min = 1;
+		int max = 160;
+		int count = 0;
+		int rev = 0;
+		for (int i = min; i < max; i++) {
+			while (i > 0) {
+				i = i / 10;
+				count++;
 
-        {
-            //need to fix the code
-            if (sum == i) {
-                System.out.print(i + " ");
-            }
-            sum = 0;
-        }
-    }
+			}
+			while (i > 0) {
+				int rem = i % 10;
+				rev = (int) (rev + (Math.pow(rem, count)));
+				i = i / 10;
+				if (rev == i) {
+					System.out.println(rev);
+				}
+
+			}
+
+			count = 0;
+		}
+
+	}
 
 }
