@@ -1,27 +1,32 @@
+import java.util.Scanner;
+
 public class ArmstrongNumberUptoN {
 	public static void main(String args[]) {
-		int min = 1;
-		int max = 160;
-		int count = 0;
-		int rev = 0;
-		for (int i = min; i < max; i++) {
-			while (i > 0) {
-				i = i / 10;
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the first Number : ");
+		int a=sc.nextInt();
+		System.out.println("Enter the second Number : ");
+		int b=sc.nextInt();
+		int count=0;
+		for(int i=a;i<=b;i++) {
+			int rev=0;
+			int num=i;
+			while(num>0) {
+				num/=10;
 				count++;
-
 			}
-			while (i > 0) {
-				int rem = i % 10;
-				rev = (int) (rev + (Math.pow(rem, count)));
-				i = i / 10;
-				if (rev == i) {
-					System.out.println(rev);
-				}
-
+			num=i;
+			while(num>0) {
+				int rem=num%10;
+				rev=(int) (rev+Math.pow(rem, count));
+				num/=10;
 			}
-
-			count = 0;
+			if(i==rev) {
+				System.out.println(i);
+			}
+			count=0;
 		}
+		
 
 	}
 
