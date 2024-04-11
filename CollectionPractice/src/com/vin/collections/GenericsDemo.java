@@ -31,3 +31,40 @@ public class GenericsDemo<Type> {
 	}
 
 }
+
+
+
+
+
+//public class GenericsDemo<T>{
+//	public T name;
+//	public T age;
+//	
+//	
+//	public T getName() {
+//		return name;
+//	}
+//	public void setName(T name) {
+//		this.name=name;
+//	}
+//	
+//	public T getAge() {
+//		return age;
+//	}
+//	public void setAge(T age) {
+//		this.age=age;
+//	}
+//	
+//	public static void main(String args[]) {
+//		GenericsDemo<String> gd=new GenericsDemo<>();
+//		gd.setName("balu");
+//		
+//		GenericsDemo<Integer> gi=new GenericsDemo<>();
+//		gi.setAge(23);
+//		System.out.println(gd.getName());
+//		System.out.println(gi.getAge());
+//	}
+//	
+//	
+//	
+//}
