@@ -10,6 +10,9 @@ public class Swapping {
         a = a * b;
         b = a / b;
         a = a / b;
+        //a=a+b;   another way for swapping of numbers
+        //b=a-b;
+        //a=a-b;
         System.out.println("After Swapping the value of a is : " + a);
         System.out.println("After Swapping the value of b is : " + b);
 
