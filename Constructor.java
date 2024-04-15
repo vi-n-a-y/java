@@ -3,8 +3,9 @@ class Student {
     int age;
 
     Student() {
-        name = "abcd";
-        age = 123;
+        name = "vinay";
+        age = 23;
+        System.out.println("Constructor is called");
 
     }
 
@@ -18,7 +19,7 @@ class Student {
 public class Constructor {
     public static void main(String args[]) {
         Student s1 = new Student();
-        Student s2 = new Student("defg", 567);
+        Student s2 = new Student("balu", 24);
         System.out.println(s1.name);
         System.out.println(s1.age);
         System.out.println(s2.name);
