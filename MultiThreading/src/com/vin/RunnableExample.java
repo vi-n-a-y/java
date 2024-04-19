@@ -7,10 +7,9 @@ class RunnableTest implements Runnable {
 		for (int i = 0; i < 100; i++) {
 			System.out.println("child Thread");
 			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Thread.sleep(100);
+			}catch(InterruptedException inEx) {
+				inEx.printStackTrace();
 			}
 
 		}
@@ -23,9 +22,8 @@ public class RunnableExample {
 	public static void main(String args[]) {
 		RunnableTest runTest = new RunnableTest();
 		Thread th = new Thread(runTest);
-
-		th.setPriority(10);
 		th.start();
+		th.setPriority(4);
 		for (int i = 0; i < 100; i++) {
 			System.out.println("main Thread");
 		}
