@@ -13,6 +13,7 @@ class Example extends Thread {
 public class StopThreadMethod {
 	public static void main(String args[]) {
 		Example ex = new Example();
+		ex.setName("Thread 1");
 		ex.start();
 		for (int i = 0; i < 10; i++) {
 			System.out.println(i);
