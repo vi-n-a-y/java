@@ -1,9 +1,10 @@
-package com.vin;
+package com.vin.collections;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
 class Employee implements Comparator<Employee> {
 	String name;
@@ -49,6 +50,10 @@ public class ComparatorDemo {
 		System.out.println(emp);
 		Collections.sort(emp, new Employee());
 		System.out.println(emp);
+		for (Employee em : emp) {
+			System.out.println(em);
+
+		}
 
 	}
 
