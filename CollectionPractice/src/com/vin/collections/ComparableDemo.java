@@ -1,4 +1,4 @@
-package com.vin;
+package com.vin.collections;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,6 +37,10 @@ public class ComparableDemo {
 		System.out.println(st);
 		Collections.sort(st);
 		System.out.println(st);
+
+		for (Student stu : st) {
+			System.out.println(stu);
+		}
 
 	}
 
