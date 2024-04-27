@@ -9,9 +9,9 @@ public class ElectricityBill {
 		int units = sc.nextInt();
 
 		int amount = 0;
-		if (units > 100 && units < 200) {
+		if (units > 100 && units <= 200) {
 			amount = units * 6;
-		} else if (units > 200 && units < 300) {
+		} else if (units > 200 && units <= 300) {
 			amount = units * 7;
 		} else if (units > 300) {
 			amount = units * 8;
@@ -24,4 +24,5 @@ public class ElectricityBill {
 	}
 
 }
+
 
