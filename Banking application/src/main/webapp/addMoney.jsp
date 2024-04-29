@@ -29,6 +29,7 @@
 	 <%AccountDTO data=(AccountDTO)session.getAttribute("data"); %>
 	<%-- <%List <AccountDTO> data=(AccountDTO)session.getAttribute("data"); %> --%>
 	<%-- <%List<AccountDTO> data=(ArrayList<AccountDTO>)session.getAttribute("data"); %> --%>
+	<%-- <%ArrayList<AccountDTO> data=(ArrayList<AccountDTO>)session.getAttribute("data"); %> --%>
 
 <%if(data!=null){ %>
 <div class="pers_info">
