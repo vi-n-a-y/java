@@ -31,7 +31,7 @@ class LowerCase {
 public class UpperCasetoLowerCase {
 	public static void main(String[] args) {
 
-		String str = "BalaRockzz";
+		String str = "AbcdefghI";
 		char ch3[] = UpperCase.toUpper(str);
 		char ch4[] = LowerCase.toLower(str);
 		System.out.println(ch3);
