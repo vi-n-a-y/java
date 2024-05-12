@@ -5,11 +5,11 @@ public class LargestOfNumbers {
 	public static void main(String[] args) {
 		int a=5,b=4,c=5;
 		if(a>b && a>c ) {
-			System.out.println("a Largest Number is : "+a);
+			System.out.println("The Largest Number is : "+a);
 		}else if(b>a && b>c){
-			System.out.println("b is greatest number"+b);
+			System.out.println("The Largest Number is : "+b);
 		}else if(c>a && c>b) {
-				System.out.println("C is greatest number"+ c);	
+				System.out.println("The Largest Number is : "+ c);	
 			
 		}else if(a==b && b==c && a==c) {
 			System.out.println("all the numbers are equal");
