@@ -15,9 +15,9 @@ public class Vowel {
             }
         }
         if (v > 0) {
-            System.out.println("the given input consist vowel(s) : " + str);
+            System.out.println("The given input consist of vowel(s) : " + str);
         } else {
-            System.out.println("not a vowel");
+            System.out.println("The given input is not consist any vowel(s) : "+str);
         }
     }
 
