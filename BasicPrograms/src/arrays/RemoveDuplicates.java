@@ -1,26 +1,34 @@
-package com.vin;
+package arrays;
+
+import java.util.Arrays;
 
 public class RemoveDuplicates {
-
 	public static void main(String[] args) {
-		int arr[] = { 2, 2, 3, 4, 2, 7, 8, 5, 3, 4 };
-
-		int i = 0;
-		int n=arr.length();
-		boolean isduplicate =false;
-		for (int j = 1; j < n; j++) {
-			if (arr[i] != arr[j]) {
-				arr[i + 1] = arr[j];
-				i++;
+		int arr[]= {1,3,4,3,5,2,6,5,3};
+		int n = arr.length;
+		int temp[]=new int[n];
+		int j=0;
+		for(int i=0;i<n;i++) {
+			boolean isduplicate=false;
+			for(int k=0 ;k<j;k++) {
+				if(arr[i]==temp[k]) {
+					isduplicate=true;
+					break;
+				}
 			}
-			arr[i]=arr[n-1];
+			if(!isduplicate) {
+				temp[j++]=arr[i];
+			}
 		}
-		for(int k=0;k<arr.length;k++) {
-			System.out.println(arr[k]);
-			
-		}
-		System.out.println(arr.length);
+		
+		
+        int[] resultArray = Arrays.copyOf(temp, j);
 
+        // Print the result array
+        System.out.println(Arrays.toString(resultArray));
+		for(int i : resultArray) {
+			System.out.println(i);
+		}
 	}
 
 }
