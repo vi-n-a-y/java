@@ -5,17 +5,17 @@ public class PalindromeString {
 	public static void main(String[] args) {
 		String str="madam";
 		
-		String rev="";
+		String revStr="";
 		for(int i=str.length()-1;i>=0;i--) {
-			rev=rev+str.charAt(i);
+			revStr=revStr+str.charAt(i);
 			
 		}
-		System.out.println(rev);
+		System.out.println(revStr);
 		System.out.println(str);
-		if(str.equals(rev)) {
-			System.out.println("the given string is palindrome");
+		if(str.equals(revStr)) {
+			System.out.println("The given string is palindrome : ",str);
 		}else {
-			System.out.println("the given String is not a palindrome");
+			System.out.println("The given String is not a palindrome");
 		}
 
 	}
