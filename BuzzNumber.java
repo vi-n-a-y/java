@@ -7,7 +7,7 @@ public class BuzzNumber// a number i.e, end with 7 or divisible by 7.
         System.out.println("Enter the value of n : ");
         int n = sc.nextInt();
         if (n % 7 == 0 || n % 10 == 7) {
-            System.out.println("Buzz Number");
+            System.out.println("atheBuzz Number");
         } else {
             System.out.println("Not a Buzz Number");
         }
