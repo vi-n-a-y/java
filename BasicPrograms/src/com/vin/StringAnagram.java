@@ -5,9 +5,9 @@ import java.util.Arrays;
 public class StringAnagram {
 
 	public static String stringAnagram(String str, String strr) {
-		
-		String str1=str.replaceAll("\\s", "").toLowerCase();
-		String str2=strr.replaceAll("\\s", "").toLowerCase();
+
+		String str1 = str.replaceAll("\\s", "").toLowerCase();
+		String str2 = strr.replaceAll("\\s", "").toLowerCase();
 		if (str1.length() != str2.length()) {
 			return "not a anagram String";
 		}
@@ -27,6 +27,7 @@ public class StringAnagram {
 
 	public static void main(String args[]) {
 		System.out.println(stringAnagram("Race", "care"));
+		System.out.println(stringAnagram("dog", "boy"));
 	}
 
 }
