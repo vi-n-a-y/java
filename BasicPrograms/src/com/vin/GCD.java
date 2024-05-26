@@ -20,6 +20,9 @@ public class GCD {
 	}
 	public static void main(String args[]) {
 		int g=findGCD(48,36);
+		int h=findGCD(12,18);
 		System.out.println(g);
+		System.out.println(h);
+		
 	}
 }
