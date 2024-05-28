@@ -4,31 +4,36 @@ import java.util.Arrays;
 
 public class RemoveDuplicates {
 	public static void main(String[] args) {
-		int arr[]= {1,3,4,3,5,2,6,5,3};
+		int arr[] = { 1,2,5,3,6,7,2,4,8};
 		int n = arr.length;
-		int temp[]=new int[n];
-		int j=0;
-		for(int i=0;i<n;i++) {
-			boolean isduplicate=false;
-			for(int k=0 ;k<j;k++) {
-				if(arr[i]==temp[k]) {
-					isduplicate=true;
+		// int temp[]=new int[n];
+		int j = 0;
+		for (int i = 0; i < n; i++) {
+			boolean isduplicate = false;
+			for (int k = 0; k < j; k++) {
+				if (arr[i] == arr[k]) {
+					isduplicate = true;
 					break;
 				}
 			}
-			if(!isduplicate) {
-				temp[j++]=arr[i];
+			if (!isduplicate) {
+				arr[j] = arr[i];
+				j++;
 			}
 		}
-		
-		
-        int[] resultArray = Arrays.copyOf(temp, j);
 
-        // Print the result array
-        System.out.println(Arrays.toString(resultArray));
-		for(int i : resultArray) {
+		arr = Arrays.copyOf(arr, j);
+
+		for (int i : arr) {
 			System.out.println(i);
 		}
+
+//      int[] resultArray = Arrays.copyOf(temp, j);
+		// Print the result array
+//      System.out.println(Arrays.toString(resultArray));
+//		for(int i : resultArray) {
+//			System.out.println(i);
+//		}
 	}
 
 }
