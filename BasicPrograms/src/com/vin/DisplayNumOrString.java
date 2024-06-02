@@ -14,11 +14,12 @@ public class DisplayNumOrString {
 			} else {
 				System.out.println("odd number");
 			}
-		} catch (NumberFormatException nf) {
+		} catch (NumberFormatException nfe) {
 			System.out.println("name is : " + str);
+			nfe.printStackTrace();
+//			nfe.getMessage();
 		}
 
 	}
 
 }
-
