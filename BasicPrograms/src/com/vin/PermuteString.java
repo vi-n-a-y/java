@@ -5,6 +5,7 @@ public class PermuteString{
 		char ch=b[i];
 		b[i]=b[j];
 		b[j]=ch;
+		System.out.println(ch);
 		return String.valueOf(b);
 	}
 	public static void generatePermutation(String str,int start,int end) {
